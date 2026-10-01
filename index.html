@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WZS Studio · Portfólio</title>
+<meta name="description" content="Demonstrações em vídeo de sites e aplicativos desenvolvidos pela WZS Studio: JurisConta, Forja Academia e um app de treino.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0c0e;
+    --surface: #15171b;
+    --line: #262a31;
+    --text: #eceef2;
+    --muted: #9aa1ad;
+    --accent: #c6ff3d;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+
+  header { padding: 72px 0 40px; }
+  .tag { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 12px 0 16px; letter-spacing: -.02em; }
+  .lead { color: var(--muted); max-width: 620px; font-size: 18px; margin: 0; }
+  nav.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  nav.jump a {
+    text-decoration: none; font-size: 14px; padding: 8px 14px;
+    border: 1px solid var(--line); border-radius: 999px; transition: border-color .2s, color .2s;
+  }
+  nav.jump a:hover { border-color: var(--accent); color: var(--accent); }
+
+  section.project { padding: 48px 0; border-top: 1px solid var(--line); }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
+  .grid > * { min-width: 0; }
+  @media (min-width: 880px) {
+    .grid { grid-template-columns: 1.6fr 1fr; gap: 40px; }
+    .grid.portrait { grid-template-columns: 340px 1fr; }
+  }
+  .media {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .media video { display: block; width: 100%; height: auto; background: #000; }
+  .portrait .media { max-width: 340px; margin: 0 auto; border-radius: 28px; padding: 8px; }
+  .portrait .media video { border-radius: 22px; }
+
+  h2 { font-size: 28px; margin: 4px 0 10px; letter-spacing: -.01em; }
+  .kind { color: var(--muted); font-size: 14px; }
+  p { margin: 0 0 14px; }
+  .info p { color: #c8ccd4; }
+  ul.stack { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+  ul.stack li { font-size: 13px; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+  .chapters { margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+  .chapters button {
+    all: unset; cursor: pointer; display: flex; gap: 12px; width: 100%; padding: 9px 0;
+    border-bottom: 1px solid var(--line); font-size: 14px; color: #c8ccd4;
+  }
+  .chapters button:hover { color: var(--accent); }
+  .chapters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .chapters time { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 40px; }
+  .note { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="tag">WZS Studio · Portfólio</div>
+    <h1>Sites e apps feitos<br>do zero.</h1>
+    <p class="lead">Demonstrações em vídeo de projetos reais: um sistema para escritórios de advocacia, um site para academia e um app de treino para celular.</p>
+    <nav class="jump" aria-label="Projetos">
+      <a href="#jurisconta">JurisConta</a>
+      <a href="#forja">Forja Academia</a>
+      <a href="#app-fitness">App de treino</a>
+    </nav>
+  </header>
+
+  <section class="project" id="jurisconta">
+    <div class="grid">
+      <div class="media">
+        <video id="v-jurisconta" src="videos/jurisconta.mp4" poster="posters/jurisconta.jpg" controls muted playsinline preload="metadata"></video>
+      </div>
+      <div class="info">
+        <div class="kind">Sistema web (SaaS)</div>
+        <h2>JurisConta</h2>
+        <p>Plataforma de gestão para escritórios de advocacia: intimações capturadas do DJEN pelo número da OAB, calculadoras jurídicas com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.</p>
+        <ol class="chapters" data-video="v-jurisconta">
+          <li><button data-t="0"><time>0:00</time>Intimações chegando pela OAB</button></li>
+          <li><button data-t="6.8"><time>0:07</time>Cálculo com memória completa</button></li>
+          <li><button data-t="22.8"><time>0:23</time>Assistente que cita a fonte</button></li>
+          <li><button data-t="30.3"><time>0:30</time>Do modelo ao .docx</button></li>
+          <li><button data-t="33.8"><time>0:34</time>Tudo do caso em um lugar</button></li>
+          <li><button data-t="45.8"><time>0:46</time>Agenda em calendário</button></li>
+          <li><button data-t="55.8"><time>0:56</time>Indicadores do escritório</button></li>
+          <li><button data-t="65.8"><time>1:06</time>Calculadoras por área</button></li>
+          <li><button data-t="73.4"><time>1:13</time>Painel inicial</button></li>
+        </ol>
+        <ul class="stack"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Front-end SPA</li><li>IA com RAG</li></ul>
+        <p class="note">Nomes, números de processo e dados de clientes aparecem desfocados nas gravações.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="forja">
+    <div class="grid">
+      <div class="media">
+        <video src="videos/forja-academia.mp4" poster="posters/forja-academia.jpg" controls muted playsinline preload="metadata"></video>
+      </div>
+      <div class="info">
+        <div class="kind">Site institucional / landing page</div>
+        <h2>Forja Academia</h2>
+        <p>Site para academia com halter 3D que gira conforme a rolagem, vídeo de fundo no topo, modalidades em cards expansíveis, grade de horários interativa, perguntas frequentes, mapa e chamada para aula experimental pelo WhatsApp.</p>
+        <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li></ul>
+        <p class="note">Marca fictícia criada para o portfólio. Fotos e vídeo de fundo do Pexels (licença livre).</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="app-fitness">
+    <div class="grid portrait">
+      <div class="media">
+        <video src="videos/app-fitness.mp4" poster="posters/app-fitness.jpg" controls muted playsinline preload="metadata"></video>
+      </div>
+      <div class="info">
+        <div class="kind">Aplicativo PWA para celular</div>
+        <h2>App de treino</h2>
+        <p>App de treino instalável na tela do celular: meta semanal com anel de progresso, montagem de treinos a partir de uma biblioteca de exercícios, registro de séries e cargas com cronômetro de descanso, gráficos de evolução, mapa de músculos trabalhados, peso corporal, dieta, sequência de dias e ranking entre amigos.</p>
+        <ul class="stack"><li>PWA</li><li>JavaScript</li><li>Supabase</li><li>Funciona offline</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 WZS Studio · <a href="https://github.com/wzsstudio">github.com/wzsstudio</a></p>
+  </footer>
+</div>
+<script>
+  document.querySelectorAll('.chapters').forEach(list => {
+    const video = document.getElementById(list.dataset.video);
+    list.addEventListener('click', e => {
+      const b = e.target.closest('button[data-t]');
+      if (!b) return;
+      video.currentTime = parseFloat(b.dataset.t);
+      video.play().catch(() => {});
+    });
+  });
+</script>
+</body>
+</html>
