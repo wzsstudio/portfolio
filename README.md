@@ -8,11 +8,13 @@ Demonstrações em vídeo de sites e apps que desenvolvi.
 
 ## JurisConta — sistema para escritórios de advocacia
 
-![Prévia do JurisConta](previews/jurisconta.gif)
+⭐ **Projeto em destaque** · [jurisconta.com](https://jurisconta.com)
+
+![Prévia do JurisConta](previews/jurisconta-tour.gif)
 
 Plataforma web de gestão jurídica: intimações capturadas do DJEN pelo número da OAB, calculadoras com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.
 
-Node.js · Express · MySQL · IA com RAG — [vídeo completo (1:16)](videos/jurisconta.mp4)
+Node.js · Express · MySQL · IA com RAG — [apresentação completa (1:53)](videos/jurisconta-tour.mp4) · [recursos em detalhe (1:16)](videos/jurisconta.mp4)
 
 > Dados de clientes e números de processo aparecem desfocados.
 
