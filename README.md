@@ -1,0 +1,35 @@
+# WZS Studio · Portfólio
+
+Demonstrações em vídeo de sites e apps que desenvolvi.
+
+**▶ Assista na página do portfólio: https://wzsstudio.github.io/portfolio/**
+
+---
+
+## JurisConta — sistema para escritórios de advocacia
+
+![Prévia do JurisConta](previews/jurisconta.gif)
+
+Plataforma web de gestão jurídica: intimações capturadas do DJEN pelo número da OAB, calculadoras com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.
+
+Node.js · Express · MySQL · IA com RAG — [vídeo completo (1:16)](videos/jurisconta.mp4)
+
+> Dados de clientes e números de processo aparecem desfocados.
+
+## Forja Academia — site para academia
+
+![Prévia da Forja Academia](previews/forja-academia.gif)
+
+Landing page com halter 3D animado pela rolagem (Three.js), vídeo de fundo, modalidades, grade de horários, FAQ, mapa e contato via WhatsApp.
+
+HTML · CSS · JavaScript · Three.js — [vídeo completo (0:46)](videos/forja-academia.mp4)
+
+> Marca fictícia criada para o portfólio. Fotos e vídeo do Pexels (licença livre).
+
+## App de treino — PWA para celular
+
+![Prévia do app de treino](previews/app-fitness.gif)
+
+Meta semanal, montagem de treinos, registro de séries e cargas com cronômetro, evolução por exercício, músculos trabalhados, dieta, sequência de dias e ranking entre amigos.
+
+PWA · JavaScript · Supabase — [vídeo completo (0:33)](videos/app-fitness.mp4)
