@@ -7,34 +7,41 @@
 <meta name="description" content="Demonstrações em vídeo de sites e aplicativos desenvolvidos pela WZS Studio: JurisConta, Forja Academia e um app de treino.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  /* Cores da identidade WZS Studio: azul-marinho, azul e gelo */
   :root {
-    --bg: #0b0c0e;
-    --surface: #15171b;
-    --line: #262a31;
-    --text: #eceef2;
-    --muted: #9aa1ad;
-    --accent: #c6ff3d;
-    --radius: 14px;
+    --bg: #0f1a2b;
+    --surface: #15233a;
+    --line: #22324d;
+    --text: #eef1f6;
+    --body: #c5ccd8;
+    --muted: #8e99ab;
+    --accent: #3b82f6;
+    --accent-strong: #1f5fd6;
+    --radius: 4px;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.6 Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+    font: 16px/1.6 "IBM Plex Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
   }
   a { color: inherit; }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 
-  header { padding: 72px 0 40px; }
-  .tag { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 12px 0 16px; letter-spacing: -.02em; }
+  header { padding: 56px 0 40px; position: relative; }
+  .pixels { position: absolute; top: 48px; right: 0; width: 54px; height: 54px; }
+  .logo { display: block; width: min(300px, 64vw); height: auto; margin-bottom: 40px; }
+  .tag { color: var(--accent); font: 500 13px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+  .tag::after { content: "_"; }
+  h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 14px 0 16px; letter-spacing: -.02em; font-weight: 700; }
   .lead { color: var(--muted); max-width: 620px; font-size: 18px; margin: 0; }
   nav.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
   nav.jump a {
-    text-decoration: none; font-size: 14px; padding: 8px 14px;
-    border: 1px solid var(--line); border-radius: 999px; transition: border-color .2s, color .2s;
+    text-decoration: none; font: 500 13px var(--mono); letter-spacing: .04em; padding: 9px 14px;
+    border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .2s, color .2s;
   }
   nav.jump a:hover { border-color: var(--accent); color: var(--accent); }
 
@@ -54,39 +61,47 @@
   .portrait .media video { border-radius: 22px; }
 
   h2 { font-size: 28px; margin: 4px 0 10px; letter-spacing: -.01em; }
-  .kind { color: var(--muted); font-size: 14px; }
+  .kind { color: var(--muted); font: 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
   p { margin: 0 0 14px; }
-  .info p { color: #c8ccd4; }
+  .info p { color: var(--body); }
   ul.stack { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  ul.stack li { font-size: 13px; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
+  ul.stack li { font: 12px var(--mono); padding: 4px 10px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
   .chapters { margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
   .chapters button {
     all: unset; cursor: pointer; display: flex; gap: 12px; width: 100%; padding: 9px 0;
-    border-bottom: 1px solid var(--line); font-size: 14px; color: #c8ccd4;
+    border-bottom: 1px solid var(--line); font-size: 14px; color: var(--body);
   }
   .chapters button:hover { color: var(--accent); }
   .chapters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .chapters time { color: var(--muted); font-variant-numeric: tabular-nums; min-width: 40px; }
+  .chapters time { color: var(--accent); font: 13px var(--mono); min-width: 40px; padding-top: 1px; }
   .note { font-size: 13px; color: var(--muted); margin-top: 16px; }
 
   .featured-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; }
   .featured h2 { font-size: clamp(30px, 5vw, 44px); margin: 6px 0 0; }
-  .featured-lead { color: #c8ccd4; max-width: 760px; margin: 14px 0 24px; font-size: 17px; }
+  .featured-lead { color: var(--body); max-width: 760px; margin: 14px 0 24px; font-size: 17px; }
   .visit {
-    text-decoration: none; font-size: 14px; font-weight: 600; color: var(--bg); background: var(--accent);
-    padding: 10px 16px; border-radius: 999px;
+    text-decoration: none; font-size: 15px; font-weight: 600; color: #fff; background: var(--accent-strong);
+    padding: 12px 20px; transition: background .2s;
   }
-  .visit:hover { filter: brightness(1.08); }
-  .hero-media { box-shadow: 0 30px 80px -30px rgba(198, 255, 61, .18); }
+  .visit:hover { background: var(--accent); }
+  .hero-media { box-shadow: 0 30px 80px -30px rgba(59, 130, 246, .35); }
   .detail { margin-top: 36px; }
 
-  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+  footer {
+    border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted);
+    font: 13px var(--mono); letter-spacing: .06em;
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
+  }
+  footer .brand { color: var(--accent); text-transform: uppercase; }
+  footer .brand::after { content: "_"; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <div class="tag">WZS Studio · Portfólio</div>
+    <svg class="pixels" viewBox="0 0 54 54" aria-hidden="true" fill="#3b82f6"><rect width="14" height="14"/><rect x="20" width="14" height="14"/><rect x="40" width="14" height="14"/><rect x="20" y="20" width="14" height="14"/><rect x="40" y="20" width="14" height="14"/><rect x="40" y="40" width="14" height="14"/></svg>
+    <img class="logo" src="assets/logo.png" alt="WZS Studio" width="505" height="185">
+    <div class="tag">Portfólio</div>
     <h1>Sites e apps feitos<br>do zero.</h1>
     <p class="lead">Demonstrações em vídeo de projetos reais: um sistema para escritórios de advocacia, um site para academia e um app de treino para celular.</p>
     <nav class="jump" aria-label="Projetos">
@@ -162,7 +177,8 @@
   </section>
 
   <footer>
-    <p>© 2026 WZS Studio · <a href="https://github.com/wzsstudio">github.com/wzsstudio</a></p>
+    <span class="brand">Sites &amp; sistemas</span>
+    <span>Orçamento: <a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a> · Veranópolis · RS</span>
   </footer>
 </div>
 <script>
