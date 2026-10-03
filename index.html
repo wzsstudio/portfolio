@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>WZS Studio · Portfólio</title>
-<meta name="description" content="Demonstrações em vídeo de sites e aplicativos desenvolvidos pela WZS Studio: JurisConta, Forja Academia e um app de treino.">
+<meta name="description" content="Demonstrações em vídeo de sites e aplicativos desenvolvidos pela WZS Studio: JurisConta, Dolce Migliavaca, Forja Academia e um app de treino.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -84,6 +84,7 @@
     padding: 12px 20px; transition: background .2s;
   }
   .visit:hover { background: var(--accent); }
+  .info .visit { display: inline-block; margin-top: 20px; }
   .hero-media { box-shadow: 0 30px 80px -30px rgba(59, 130, 246, .35); }
   .detail { margin-top: 36px; }
 
@@ -103,9 +104,10 @@
     <img class="logo" src="assets/logo.png" alt="WZS Studio" width="505" height="185">
     <div class="tag">Portfólio</div>
     <h1>Sites e apps feitos<br>do zero.</h1>
-    <p class="lead">Demonstrações em vídeo de projetos reais: um sistema para escritórios de advocacia, um site para academia e um app de treino para celular.</p>
+    <p class="lead">Demonstrações em vídeo de projetos reais: um sistema para escritórios de advocacia, um site para confeitaria, um site para academia e um app de treino para celular.</p>
     <nav class="jump" aria-label="Projetos">
       <a href="#jurisconta">JurisConta</a>
+      <a href="#dolce">Dolce Migliavaca</a>
       <a href="#forja">Forja Academia</a>
       <a href="#app-fitness">App de treino</a>
     </nav>
@@ -143,6 +145,31 @@
         </ol>
         <ul class="stack"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Front-end SPA</li><li>IA com RAG</li></ul>
         <p class="note">Nomes, números de processo e dados de clientes aparecem desfocados nas gravações.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="project" id="dolce">
+    <div class="grid">
+      <div class="media">
+        <video id="v-dolce" src="videos/dolce-migliavaca.mp4" poster="posters/dolce-migliavaca.jpg" controls muted playsinline preload="metadata"></video>
+      </div>
+      <div class="info">
+        <div class="kind">Site para confeitaria · no ar</div>
+        <h2>Dolce Migliavaca</h2>
+        <p>Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mouse ou o dedo, cardápio arrastável com inércia e pedido direto no WhatsApp, galeria com fotos que se revelam na rolagem e área de tele-entrega. Logo e identidade visual criados para o projeto.</p>
+        <ol class="chapters" data-video="v-dolce">
+          <li><button data-t="0"><time>0:00</time>Topo com cheesecake em 3D</button></li>
+          <li><button data-t="8"><time>0:08</time>Nossa história</button></li>
+          <li><button data-t="12.5"><time>0:12</time>Cardápio arrastável</button></li>
+          <li><button data-t="22.5"><time>0:22</time>Galeria</button></li>
+          <li><button data-t="28"><time>0:28</time>Vitrine 3D</button></li>
+          <li><button data-t="34"><time>0:34</time>Como encomendar e tele-entrega</button></li>
+          <li><button data-t="41.5"><time>0:41</time>Contato</button></li>
+        </ol>
+        <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li><li>Cloudflare Pages</li></ul>
+        <a class="visit" href="https://dolce-migliavaca.pages.dev" target="_blank" rel="noopener">dolce-migliavaca.pages.dev ↗</a>
+        <p class="note">Modelo 3D “Cheese Cake” de rebuilderai (Sketchfab).</p>
       </div>
     </div>
   </section>

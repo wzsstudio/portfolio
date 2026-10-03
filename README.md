@@ -18,6 +18,18 @@ Node.js · Express · MySQL · IA com RAG — [apresentação completa (1:53)](v
 
 > Dados de clientes e números de processo aparecem desfocados.
 
+## Dolce Migliavaca — site para confeitaria
+
+🌐 **No ar:** [dolce-migliavaca.pages.dev](https://dolce-migliavaca.pages.dev)
+
+![Prévia do site Dolce Migliavaca](previews/dolce-migliavaca.gif)
+
+Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mouse ou o dedo, cardápio arrastável com pedido direto no WhatsApp, galeria com revelação na rolagem e área de tele-entrega. Logo e identidade visual criados para o projeto.
+
+HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (0:46)](videos/dolce-migliavaca.mp4)
+
+> Modelo 3D “Cheese Cake” de rebuilderai (Sketchfab).
+
 ## Forja Academia — site para academia
 
 ![Prévia da Forja Academia](previews/forja-academia.gif)
