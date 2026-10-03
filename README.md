@@ -28,7 +28,7 @@ Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mo
 
 HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (0:46)](videos/dolce-migliavaca.mp4)
 
-> Modelo 3D “Cheese Cake” de rebuilderai (Sketchfab).
+> Modelo 3D [“Cheese Cake”](https://sketchfab.com/3d-models/cheese-cake-7290e12a31d04cb3892049f379c4bafb) por [rebuilderai](https://sketchfab.com/RebuilderAI-vrin) (Sketchfab), licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br).
 
 ## Forja Academia — site para academia
 
