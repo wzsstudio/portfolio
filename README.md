@@ -36,7 +36,7 @@ HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (
 
 Landing page com halter 3D animado pela rolagem (Three.js), vídeo de fundo, modalidades, grade de horários, FAQ, mapa e contato via WhatsApp.
 
-HTML · CSS · JavaScript · Three.js — [vídeo completo (0:46)](videos/forja-academia.mp4)
+HTML · CSS · JavaScript · Three.js — [vídeo completo (0:56)](videos/forja-academia.mp4)
 
 > Marca fictícia criada para o portfólio. Fotos e vídeo do Pexels (licença livre).
 
@@ -46,4 +46,4 @@ HTML · CSS · JavaScript · Three.js — [vídeo completo (0:46)](videos/forja-
 
 Meta semanal, montagem de treinos, registro de séries e cargas com cronômetro, evolução por exercício, músculos trabalhados, dieta, sequência de dias e ranking entre amigos.
 
-PWA · JavaScript · Supabase — [vídeo completo (0:33)](videos/app-fitness.mp4)
+PWA · JavaScript · Supabase — [vídeo completo (0:49)](videos/app-fitness.mp4)
