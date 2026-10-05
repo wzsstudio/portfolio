@@ -3,237 +3,381 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WZS Studio · Portfólio</title>
-<meta name="description" content="Demonstrações em vídeo de sites e aplicativos desenvolvidos pela WZS Studio: JurisConta, Dolce Migliavaca, Forja Academia e um app de treino.">
+<title>WZS Studio · Sites e sistemas sob medida</title>
+<meta name="description" content="WZS Studio: sites, landing pages e sistemas feitos do zero para negócios de Veranópolis e região. Veja os projetos em vídeo e faça seu orçamento.">
+<meta name="theme-color" content="#0f1a2b">
+<meta property="og:title" content="WZS Studio · Sites e sistemas sob medida">
+<meta property="og:description" content="Sites, landing pages e sistemas feitos do zero. Veja os projetos em vídeo e faça seu orçamento.">
+<meta property="og:image" content="https://wzsstudio.github.io/portfolio/posters/showreel.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  /* Cores da identidade WZS Studio: azul-marinho, azul e gelo */
-  :root {
-    --bg: #0f1a2b;
-    --surface: #15233a;
-    --line: #22324d;
-    --text: #eef1f6;
-    --body: #c5ccd8;
-    --muted: #8e99ab;
-    --accent: #3b82f6;
-    --accent-strong: #1f5fd6;
-    --radius: 4px;
-    --mono: "IBM Plex Mono", ui-monospace, monospace;
-  }
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0; background: var(--bg); color: var(--text);
-    font: 16px/1.6 "IBM Plex Sans", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
-  }
-  a { color: inherit; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
-
-  header { padding: 56px 0 40px; position: relative; }
-  .pixels { position: absolute; top: 48px; right: 0; width: 54px; height: 54px; }
-  .logo { display: block; width: min(300px, 64vw); height: auto; margin-bottom: 40px; }
-  .tag { color: var(--accent); font: 500 13px/1.4 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
-  .tag::after { content: "_"; }
-  h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.05; margin: 14px 0 16px; letter-spacing: -.02em; font-weight: 700; }
-  .lead { color: var(--muted); max-width: 620px; font-size: 18px; margin: 0; }
-  nav.jump { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
-  nav.jump a {
-    text-decoration: none; font: 500 13px var(--mono); letter-spacing: .04em; padding: 9px 14px;
-    border: 1px solid var(--line); border-radius: var(--radius); transition: border-color .2s, color .2s;
-  }
-  nav.jump a:hover { border-color: var(--accent); color: var(--accent); }
-
-  section.project { padding: 48px 0; border-top: 1px solid var(--line); }
-  .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; align-items: start; }
-  .grid > * { min-width: 0; }
-  @media (min-width: 880px) {
-    .grid { grid-template-columns: 1.6fr 1fr; gap: 40px; }
-    .grid.portrait { grid-template-columns: 340px 1fr; }
-  }
-  .media {
-    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
-    overflow: hidden;
-  }
-  .media video { display: block; width: 100%; height: auto; background: #000; }
-  .portrait .media { max-width: 340px; margin: 0 auto; border-radius: 28px; padding: 8px; }
-  .portrait .media video { border-radius: 22px; }
-
-  h2 { font-size: 28px; margin: 4px 0 10px; letter-spacing: -.01em; }
-  .kind { color: var(--muted); font: 13px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
-  p { margin: 0 0 14px; }
-  .info p { color: var(--body); }
-  ul.stack { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
-  ul.stack li { font: 12px var(--mono); padding: 4px 10px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); color: var(--muted); }
-  .chapters { margin: 18px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-  .chapters button {
-    all: unset; cursor: pointer; display: flex; gap: 12px; width: 100%; padding: 9px 0;
-    border-bottom: 1px solid var(--line); font-size: 14px; color: var(--body);
-  }
-  .chapters button:hover { color: var(--accent); }
-  .chapters button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .chapters time { color: var(--accent); font: 13px var(--mono); min-width: 40px; padding-top: 1px; }
-  .note { font-size: 13px; color: var(--muted); margin-top: 16px; }
-
-  .featured-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px; }
-  .featured h2 { font-size: clamp(30px, 5vw, 44px); margin: 6px 0 0; }
-  .featured-lead { color: var(--body); max-width: 760px; margin: 14px 0 24px; font-size: 17px; }
-  .visit {
-    text-decoration: none; font-size: 15px; font-weight: 600; color: #fff; background: var(--accent-strong);
-    padding: 12px 20px; transition: background .2s;
-  }
-  .visit:hover { background: var(--accent); }
-  .info .visit { display: inline-block; margin-top: 20px; }
-  .hero-media { box-shadow: 0 30px 80px -30px rgba(59, 130, 246, .35); }
-
-  footer {
-    border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted);
-    font: 13px var(--mono); letter-spacing: .06em;
-    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
-  }
-  footer .brand { color: var(--accent); text-transform: uppercase; }
-  footer .brand::after { content: "_"; }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-<div class="wrap">
-  <header>
-    <svg class="pixels" viewBox="0 0 54 54" aria-hidden="true" fill="#3b82f6"><rect width="14" height="14"/><rect x="20" width="14" height="14"/><rect x="40" width="14" height="14"/><rect x="20" y="20" width="14" height="14"/><rect x="40" y="20" width="14" height="14"/><rect x="40" y="40" width="14" height="14"/></svg>
-    <img class="logo" src="assets/logo.png" alt="WZS Studio" width="505" height="185">
-    <div class="tag">Portfólio</div>
-    <h1>Sites e apps feitos<br>do zero.</h1>
-    <p class="lead">Demonstrações em vídeo de projetos reais: um sistema para escritórios de advocacia, um site para confeitaria, um site para academia e um app de treino para celular.</p>
-    <nav class="jump" aria-label="Projetos">
-      <a href="#jurisconta">JurisConta</a>
-      <a href="#dolce">Dolce Migliavaca</a>
-      <a href="#forja">Forja Academia</a>
-      <a href="#app-fitness">App de treino</a>
-    </nav>
-  </header>
+<body class="is-loading">
 
-  <section class="project featured" id="jurisconta">
-    <div class="featured-head">
-      <div>
-        <div class="tag">Projeto em destaque · Sistema web (SaaS)</div>
-        <h2>JurisConta</h2>
-      </div>
-      <a class="visit" href="https://jurisconta.com" target="_blank" rel="noopener">jurisconta.com ↗</a>
-    </div>
-    <p class="featured-lead">Plataforma de gestão para escritórios de advocacia: intimações capturadas do DJEN pelo número da OAB, calculadoras jurídicas com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.</p>
-    <div class="grid">
-      <div class="media hero-media">
-        <video id="v-jurisconta-site" src="videos/jurisconta-site.mp4" poster="posters/jurisconta-site.jpg" controls muted playsinline preload="metadata"></video>
-      </div>
-      <div class="info">
-        <div class="kind">Site de apresentação</div>
-        <p>Página pública em capítulos: a figura da Justiça em 3D muda de pose a cada etapa enquanto o texto apresenta o produto, navegada pela roda do mouse ou pelas setas.</p>
-        <ol class="chapters" data-video="v-jurisconta-site">
-          <li><button data-t="0"><time>0:00</time>Abertura com a Justiça em 3D</button></li>
-          <li><button data-t="5"><time>0:05</time>Só as perguntas que movem a fórmula</button></li>
-          <li><button data-t="9"><time>0:09</time>Fórmulas isoladas</button></li>
-          <li><button data-t="12.9"><time>0:12</time>Memória de cálculo</button></li>
-          <li><button data-t="17.5"><time>0:17</time>Intimações pela OAB</button></li>
-          <li><button data-t="21.4"><time>0:21</time>Uma porta para cada rotina</button></li>
-          <li><button data-t="25.4"><time>0:25</time>Plano e teste de sete dias</button></li>
-          <li><button data-t="29.3"><time>0:29</time>Encerramento</button></li>
-          <li><button data-t="34.1"><time>0:34</time>Página de calculadoras</button></li>
-        </ol>
-        <ul class="stack"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Front-end SPA</li><li>IA com RAG</li></ul>
-      </div>
-    </div>
-  </section>
+<svg class="sr-defs" aria-hidden="true" focusable="false">
+<defs><clipPath id="r0"><rect x="780" y="240" width="700" height="232"/></clipPath><clipPath id="r1"><rect x="780" y="474" width="700" height="160"/></clipPath><clipPath id="disc"><circle cx="537" cy="432" r="206.5"/></clipPath></defs>
+<symbol id="wzs-mark" viewBox="325 222 424 422"><g fill="none" stroke="currentColor" stroke-width="13">
+<circle cx="537" cy="432" r="200" transform="rotate(-90 537 432)"/>
+<g clip-path="url(#disc)"><g><g><circle cx="537" cy="432" r="200"/><circle cx="581.44" cy="432" r="200"/><circle cx="625.89" cy="432" r="200"/><circle cx="670.33" cy="432" r="200"/><circle cx="714.78" cy="432" r="200"/><circle cx="759.22" cy="432" r="200"/><circle cx="803.67" cy="432" r="200"/><circle cx="848.11" cy="432" r="200"/><circle cx="892.56" cy="432" r="200"/><circle cx="937.00" cy="432" r="200"/></g></g></g>
+</g></symbol>
+<symbol id="wzs-logo" viewBox="325 222 1160 422"><g fill="none" stroke="currentColor" stroke-width="13">
+<circle cx="537" cy="432" r="200" transform="rotate(-90 537 432)"/>
+<g clip-path="url(#disc)"><g><g><circle cx="537" cy="432" r="200"/><circle cx="581.44" cy="432" r="200"/><circle cx="625.89" cy="432" r="200"/><circle cx="670.33" cy="432" r="200"/><circle cx="714.78" cy="432" r="200"/><circle cx="759.22" cy="432" r="200"/><circle cx="803.67" cy="432" r="200"/><circle cx="848.11" cy="432" r="200"/><circle cx="892.56" cy="432" r="200"/><circle cx="937.00" cy="432" r="200"/></g></g></g>
+</g><g fill="currentColor"><g clip-path="url(#r0)"><path d="M795.2 260.8 L808.2 315.5 L808.5 318.0 L814.2 340.2 L824.8 385.8 L837.8 438.8 L841.5 456.2 L842.8 460.0 L843.8 460.5 L896.8 460.5 L898.5 459.5 L921.0 376.5 L931.5 339.2 L932.5 337.8 L933.0 337.8 L933.8 338.8 L936.0 347.0 L963.0 459.8 L964.5 460.5 L1018.2 460.5 L1019.5 460.2 L1020.5 459.2 L1040.0 384.0 L1072.8 262.2 L1072.5 260.2 L1021.2 260.0 L1020.2 260.8 L1011.0 301.5 L1000.0 344.2 L995.8 362.8 L993.0 372.0 L990.0 385.5 L989.2 387.0 L988.8 387.0 L987.8 385.5 L985.2 373.8 L975.5 336.2 L974.5 330.8 L957.0 260.8 L955.8 260.0 L911.5 260.2 L910.5 262.2 L900.8 300.2 L891.0 335.8 L889.0 341.5 L877.0 385.5 L876.0 387.2 L874.8 385.8 L872.5 373.5 L859.8 316.2 L855.5 294.0 L848.2 260.8 L847.0 260.0 L796.5 260.0Z"/><path d="M1090.5 260.5 L1090.0 264.5 L1090.0 294.5 L1090.2 295.5 L1091.0 296.0 L1181.0 296.2 L1181.8 297.2 L1178.0 302.5 L1081.8 421.0 L1081.0 422.8 L1081.2 459.8 L1082.5 460.5 L1245.8 460.5 L1247.0 460.0 L1247.2 424.0 L1246.2 423.2 L1145.2 423.2 L1143.8 422.5 L1145.2 419.8 L1170.2 389.0 L1247.0 296.5 L1247.0 260.8 L1245.8 260.0 L1092.2 260.0Z"/><path d="M1289.0 267.5 L1280.5 273.8 L1274.8 280.2 L1270.0 289.0 L1268.2 294.2 L1267.2 299.2 L1267.0 334.0 L1269.0 343.5 L1271.0 348.8 L1273.2 353.0 L1276.8 357.8 L1280.2 361.5 L1287.8 367.2 L1296.2 371.8 L1306.8 375.2 L1318.5 377.0 L1368.5 377.0 L1371.2 377.5 L1374.8 379.0 L1377.2 380.8 L1379.2 383.0 L1381.5 388.0 L1381.8 414.0 L1380.0 418.5 L1376.2 422.5 L1373.0 424.2 L1369.5 425.2 L1327.5 425.2 L1324.2 424.2 L1319.8 422.0 L1313.2 417.8 L1304.5 411.0 L1303.0 411.0 L1270.5 430.5 L1269.5 431.8 L1270.2 433.2 L1277.2 441.2 L1288.2 450.2 L1296.0 454.5 L1303.2 457.5 L1308.8 459.2 L1315.0 460.5 L1319.8 461.0 L1378.2 461.0 L1383.5 460.5 L1390.8 459.2 L1400.5 456.2 L1409.2 452.2 L1414.8 448.8 L1422.0 442.2 L1427.2 435.2 L1430.8 428.0 L1433.0 419.2 L1433.0 382.0 L1430.8 373.0 L1426.0 364.0 L1419.2 356.2 L1412.8 351.2 L1402.5 346.0 L1392.5 343.0 L1381.5 341.5 L1330.2 341.5 L1325.0 339.8 L1320.8 336.2 L1319.2 333.8 L1318.2 330.5 L1318.0 306.8 L1319.0 302.5 L1321.5 298.5 L1324.5 296.0 L1330.0 294.0 L1368.2 294.0 L1378.2 298.0 L1389.5 304.2 L1392.5 305.2 L1417.5 278.5 L1417.5 277.2 L1411.5 272.2 L1405.0 268.0 L1398.8 264.8 L1385.5 260.2 L1375.0 258.8 L1315.2 259.0 L1307.8 260.2 L1302.0 261.8 L1294.2 264.8Z"/></g><g clip-path="url(#r1)"><path d="M819.8 485.0 L814.8 488.2 L809.2 493.8 L806.2 498.5 L804.2 504.5 L803.5 509.0 L803.5 532.0 L804.5 537.5 L807.5 544.8 L810.0 548.2 L816.5 554.2 L821.8 557.2 L828.8 559.8 L836.8 561.2 L869.0 561.2 L871.5 561.5 L875.2 563.0 L877.8 565.2 L879.0 567.2 L879.8 569.8 L879.8 587.0 L878.8 590.2 L877.5 592.2 L875.2 594.2 L871.2 595.8 L844.5 595.8 L839.0 593.5 L833.8 589.8 L829.5 586.0 L827.5 585.2 L806.2 598.8 L805.2 599.8 L805.2 601.0 L808.2 605.0 L812.2 609.0 L818.5 613.8 L827.0 618.0 L832.0 619.5 L837.5 620.5 L880.0 620.5 L884.8 619.8 L892.2 617.5 L899.2 614.0 L903.0 611.2 L908.5 605.5 L911.0 601.5 L913.8 593.8 L914.5 586.8 L914.2 565.8 L912.2 558.0 L909.8 552.8 L906.5 548.5 L900.8 543.5 L895.2 540.5 L888.5 538.2 L880.2 537.0 L845.0 537.0 L842.2 536.0 L839.8 534.0 L837.8 530.0 L837.5 512.0 L838.8 508.5 L841.5 505.5 L846.0 503.8 L869.8 503.8 L874.8 505.5 L884.0 510.5 L887.2 511.8 L890.2 509.0 L903.8 493.5 L903.8 492.2 L900.2 489.2 L892.0 484.2 L884.5 481.5 L875.2 480.0 L838.0 480.0 L827.5 482.0Z"/><path d="M917.5 482.0 L917.0 483.0 L917.0 504.8 L917.5 505.8 L951.0 506.0 L951.8 506.2 L952.8 507.8 L953.0 619.2 L953.8 619.8 L988.2 619.5 L988.8 618.8 L989.0 507.2 L990.0 506.2 L992.5 506.0 L1024.2 505.8 L1024.8 505.0 L1024.5 482.0 L925.2 481.5Z"/><path d="M1038.5 482.0 L1038.0 483.0 L1038.0 587.5 L1039.2 594.8 L1040.2 597.8 L1044.0 605.0 L1049.5 611.2 L1054.5 614.8 L1063.8 618.8 L1072.2 620.5 L1111.5 620.5 L1117.8 619.5 L1123.2 617.8 L1128.2 615.5 L1133.8 612.0 L1138.2 607.8 L1142.2 602.2 L1145.0 595.5 L1146.8 587.0 L1146.8 482.5 L1146.0 481.8 L1112.8 481.8 L1112.0 482.2 L1111.5 586.8 L1109.2 591.5 L1107.0 593.5 L1104.2 594.8 L1081.5 595.0 L1079.5 594.5 L1077.0 593.0 L1075.0 590.8 L1073.8 587.2 L1073.8 482.8 L1072.2 481.5Z"/><path d="M1163.8 481.8 L1163.0 482.8 L1163.2 619.2 L1164.2 619.8 L1233.8 619.8 L1241.2 618.5 L1246.5 616.8 L1253.2 613.5 L1256.8 611.2 L1264.0 604.5 L1266.5 601.0 L1269.8 594.8 L1272.0 585.2 L1272.0 516.0 L1271.5 512.5 L1269.8 506.5 L1267.5 501.5 L1265.0 497.5 L1258.2 490.8 L1252.5 487.0 L1245.5 484.0 L1236.5 482.0ZM1200.0 506.2 L1226.8 506.5 L1228.5 507.0 L1232.0 509.0 L1234.8 512.2 L1236.0 515.2 L1236.5 517.5 L1236.5 583.5 L1235.5 587.2 L1233.0 591.0 L1230.5 593.0 L1226.5 594.5 L1199.8 594.8 L1198.5 593.8 L1198.5 507.5Z"/><path d="M1321.5 481.8 L1288.2 481.8 L1287.5 482.5 L1287.5 619.0 L1288.5 619.8 L1321.2 619.8 L1322.5 618.2 L1322.5 483.0Z"/><path d="M1354.2 486.5 L1347.2 491.8 L1343.0 497.0 L1339.8 503.5 L1337.8 513.0 L1337.8 588.5 L1339.5 597.0 L1342.0 602.8 L1345.8 608.0 L1349.0 611.2 L1352.8 614.0 L1361.2 618.2 L1371.0 620.5 L1412.2 620.5 L1420.8 618.8 L1429.5 615.0 L1435.0 611.2 L1438.8 607.5 L1441.5 603.8 L1445.0 595.8 L1446.2 588.8 L1446.5 515.2 L1446.0 510.2 L1445.0 506.0 L1442.2 499.2 L1439.2 494.8 L1434.8 490.2 L1430.8 487.2 L1423.5 483.8 L1417.8 482.0 L1412.5 481.0 L1373.5 480.8 L1364.8 482.2 L1359.5 484.0ZM1379.8 506.0 L1403.0 505.8 L1407.5 508.0 L1409.2 510.0 L1410.5 513.0 L1411.0 515.5 L1411.0 586.5 L1410.0 590.0 L1409.0 591.8 L1406.8 594.0 L1404.0 595.2 L1399.2 595.8 L1380.2 595.5 L1377.8 594.5 L1375.0 592.0 L1373.0 587.8 L1372.8 514.8 L1373.5 511.8 L1375.0 509.2 L1376.2 508.0Z"/></g></g></symbol>
+</svg>
 
-  <section class="project" id="dolce">
-    <div class="grid">
-      <div class="media">
-        <video id="v-dolce" src="videos/dolce-migliavaca.mp4" poster="posters/dolce-migliavaca.jpg" controls muted playsinline preload="metadata"></video>
-      </div>
-      <div class="info">
-        <div class="kind">Site para confeitaria · no ar</div>
-        <h2>Dolce Migliavaca</h2>
-        <p>Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mouse ou o dedo, cardápio arrastável com inércia e pedido direto no WhatsApp, galeria com fotos que se revelam na rolagem e área de tele-entrega. Logo e identidade visual criados para o projeto.</p>
-        <ol class="chapters" data-video="v-dolce">
-          <li><button data-t="0"><time>0:00</time>Topo com cheesecake em 3D</button></li>
-          <li><button data-t="8"><time>0:08</time>Nossa história</button></li>
-          <li><button data-t="12.5"><time>0:12</time>Cardápio arrastável</button></li>
-          <li><button data-t="22.5"><time>0:22</time>Galeria</button></li>
-          <li><button data-t="28"><time>0:28</time>Vitrine 3D</button></li>
-          <li><button data-t="34"><time>0:34</time>Como encomendar e tele-entrega</button></li>
-          <li><button data-t="41.5"><time>0:41</time>Contato</button></li>
-        </ol>
-        <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li><li>Cloudflare Pages</li></ul>
-        <a class="visit" href="https://dolce-migliavaca.pages.dev" target="_blank" rel="noopener">dolce-migliavaca.pages.dev ↗</a>
-        <p class="note">Modelo 3D <a href="https://sketchfab.com/3d-models/cheese-cake-7290e12a31d04cb3892049f379c4bafb" target="_blank" rel="noopener">“Cheese Cake”</a> por <a href="https://sketchfab.com/RebuilderAI-vrin" target="_blank" rel="noopener">rebuilderai</a> (Sketchfab), licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="project" id="forja">
-    <div class="grid">
-      <div class="media">
-        <video id="v-forja" src="videos/forja-academia.mp4" poster="posters/forja-academia.jpg" controls muted playsinline preload="metadata"></video>
-      </div>
-      <div class="info">
-        <div class="kind">Site institucional / landing page</div>
-        <h2>Forja Academia</h2>
-        <p>Site para academia com halter 3D que gira conforme a rolagem, vídeo de fundo no topo, modalidades em cards expansíveis, grade de horários interativa, perguntas frequentes, mapa e chamada para aula experimental pelo WhatsApp.</p>
-        <ol class="chapters" data-video="v-forja">
-          <li><button data-t="0"><time>0:00</time>Topo com vídeo de fundo</button></li>
-          <li><button data-t="3.8"><time>0:03</time>Halter 3D guiado pela rolagem</button></li>
-          <li><button data-t="17.5"><time>0:17</time>Modalidades em cards</button></li>
-          <li><button data-t="26"><time>0:26</time>Estrutura</button></li>
-          <li><button data-t="29.7"><time>0:29</time>Como funciona</button></li>
-          <li><button data-t="33"><time>0:33</time>Grade de horários</button></li>
-          <li><button data-t="41.4"><time>0:41</time>Planos</button></li>
-          <li><button data-t="46"><time>0:46</time>Perguntas frequentes</button></li>
-          <li><button data-t="50.8"><time>0:50</time>Mapa e contato</button></li>
-          <li><button data-t="54.4"><time>0:54</time>Chamada final</button></li>
-        </ol>
-        <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li></ul>
-        <p class="note">Marca fictícia criada para o portfólio. Fotos e vídeo de fundo do Pexels (licença livre).</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="project" id="app-fitness">
-    <div class="grid portrait">
-      <div class="media">
-        <video id="v-app" src="videos/app-fitness.mp4" poster="posters/app-fitness.jpg" controls muted playsinline preload="metadata"></video>
-      </div>
-      <div class="info">
-        <div class="kind">Aplicativo PWA para celular</div>
-        <h2>App de treino</h2>
-        <p>App de treino instalável na tela do celular: meta semanal com anel de progresso, montagem de treinos a partir de uma biblioteca de exercícios, registro de séries e cargas com cronômetro de descanso, gráficos de evolução, mapa de músculos trabalhados, peso corporal, dieta, sequência de dias e ranking entre amigos.</p>
-        <ol class="chapters" data-video="v-app">
-          <li><button data-t="0"><time>0:00</time>Início e meta da semana</button></li>
-          <li><button data-t="6.8"><time>0:06</time>Treinos</button></li>
-          <li><button data-t="9.8"><time>0:09</time>Treino com cronômetro de descanso</button></li>
-          <li><button data-t="19.1"><time>0:19</time>Demonstração do exercício</button></li>
-          <li><button data-t="25.3"><time>0:25</time>Histórico com gráfico de evolução</button></li>
-          <li><button data-t="31.8"><time>0:31</time>Progresso e músculos trabalhados</button></li>
-          <li><button data-t="41.7"><time>0:41</time>Perfil e personagem</button></li>
-        </ol>
-        <ul class="stack"><li>PWA</li><li>JavaScript</li><li>Supabase</li><li>Funciona offline</li></ul>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <span class="brand">Sites &amp; sistemas</span>
-    <span>Orçamento: <a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a> · Veranópolis · RS</span>
-  </footer>
+<!-- ============ PRELOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader__mark"><use href="#wzs-mark"/></svg>
+  <span class="loader__count" id="loader-count">0</span>
 </div>
-<script>
-  document.querySelectorAll('.chapters').forEach(list => {
-    const video = document.getElementById(list.dataset.video);
-    list.addEventListener('click', e => {
-      const b = e.target.closest('button[data-t]');
-      if (!b) return;
-      video.currentTime = parseFloat(b.dataset.t);
-      video.play().catch(() => {});
-    });
-  });
-</script>
+
+<!-- ============ TOPO FIXO ============ -->
+<header class="top" id="top">
+  <a class="top__mark" href="#inicio" aria-label="WZS Studio, voltar ao início">WZS<span>_</span></a>
+  <span class="top__section" id="top-section" aria-hidden="true"></span>
+  <button class="top__menu" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu <span class="dots">::</span></button>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu" hidden>
+  <ul>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#estudio">Estúdio</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="menu__foot">
+    <a href="https://wa.me/555497147741?text=Ol%C3%A1!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">WhatsApp</a>
+    <span>/</span>
+    <a href="mailto:wes11zslan@gmail.com">E-mail</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio" data-theme="light">
+  <div class="hero__head">
+    <p class="hero__claim">Não é só um site, é o seu negócio.<br>Feito do zero, sob medida.</p>
+    <a class="pill pill--blue" href="#contato">Peça seu orçamento <span class="arr">→</span></a>
+  </div>
+  <h1 class="hero__logo">
+    <span class="sr-only">WZS Studio</span>
+    <svg aria-hidden="true"><use href="#wzs-logo"/></svg>
+  </h1>
+  <div class="hero__foot">
+    <span>Estúdio de sites em Veranópolis · RS</span>
+    <span class="hero__links">
+      <a href="https://wa.me/555497147741" target="_blank" rel="noopener">WhatsApp</a>
+      <span>/</span>
+      <a href="mailto:wes11zslan@gmail.com">E-mail</a>
+      <span class="badge">PT</span>
+    </span>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO ============ -->
+<section class="manifesto" data-theme="light">
+  <div class="manifesto__grid">
+    <h2 class="big reveal-lines">A maioria dos sites só existe.<br>Os meus trabalham.</h2>
+    <div class="band">
+      <video src="videos/showreel.mp4" poster="posters/showreel.jpg" muted loop playsinline preload="none" data-auto></video>
+    </div>
+  </div>
+  <div class="aside">
+    <span class="paren">( Por que sob medida )</span>
+    <p class="aside__text">Num mundo cheio de templates iguais, o raro é um site que se parece com o seu negócio. Cada projeto nasce do zero: rápido, pronto para o celular e fácil de achar no Google.</p>
+    <figure class="aside__img"><img src="posters/dolce-migliavaca.jpg" alt="Site da confeitaria Dolce Migliavaca" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ PROJETOS ============ -->
+<section class="works" id="projetos" data-theme="dark" data-label="Projetos">
+  <div class="works__head">
+    <h2 class="works__title" aria-label="Projetos"><span>P</span><span>R</span><span>O</span><span>J</span><span>E</span><span>T</span><span>O</span><span>S</span></h2>
+    <p class="works__claim">Bons sites informam.<br>Ótimos sites vendem.</p>
+  </div>
+
+  <div class="works__list">
+
+    <article class="work work--l" data-case="jurisconta">
+      <button class="work__open" aria-label="Ver o projeto JurisConta">
+        <span class="mono">JurisConta</span>
+        <span class="work__line">O direito, calculado com memória.</span>
+        <span class="work__media"><video src="videos/jurisconta-site.mp4" poster="posters/jurisconta-site.jpg" muted loop playsinline preload="none"></video></span>
+      </button>
+    </article>
+
+    <article class="work work--r" data-case="dolce">
+      <button class="work__open" aria-label="Ver o projeto Dolce Migliavaca">
+        <span class="mono">Dolce Migliavaca</span>
+        <span class="work__line">Um cardápio que dá vontade de pedir.</span>
+        <span class="work__media"><video src="videos/dolce-migliavaca.mp4" poster="posters/dolce-migliavaca.jpg" muted loop playsinline preload="none"></video></span>
+      </button>
+    </article>
+
+    <article class="work work--c" data-case="hyper">
+      <button class="work__open" aria-label="Ver o projeto Hyper Frame Studio">
+        <span class="mono">Hyper Frame Studio</span>
+        <span class="work__line">Cada frame conta uma história.</span>
+        <span class="work__media"><video src="videos/hyper-frame.mp4" poster="posters/hyper-frame.jpg" muted loop playsinline preload="none"></video></span>
+      </button>
+    </article>
+
+    <article class="work work--s" data-case="app">
+      <button class="work__open" aria-label="Ver o projeto App de treino">
+        <span class="mono">App de treino</span>
+        <span class="work__line">O treino inteiro no bolso.</span>
+        <span class="work__media work__media--phone"><video src="videos/app-fitness.mp4" poster="posters/app-fitness.jpg" muted loop playsinline preload="none"></video></span>
+      </button>
+    </article>
+
+    <article class="work work--r2" data-case="forja">
+      <button class="work__open" aria-label="Ver o projeto Forja Academia">
+        <span class="mono">Forja Academia</span>
+        <span class="work__line">Um halter que gira com a rolagem.</span>
+        <span class="work__media"><video src="videos/forja-academia.mp4" poster="posters/forja-academia.jpg" muted loop playsinline preload="none"></video></span>
+      </button>
+    </article>
+
+  </div>
+
+  <div class="works__foot">
+    <a class="works__all" href="https://github.com/wzsstudio/portfolio" target="_blank" rel="noopener">Ver no GitHub <span class="arr">↳</span></a>
+    <span class="mono-lg">(05)</span>
+    <span class="mono-lg">© 25.26</span>
+  </div>
+</section>
+
+<!-- ============ SHOWREEL EM TELA CHEIA ============ -->
+<section class="reel" data-theme="dark" data-label="Showreel">
+  <div class="reel__frame" id="reel-frame">
+    <video id="reel" src="videos/showreel.mp4" poster="posters/showreel.jpg" muted loop playsinline preload="none" data-auto></video>
+    <button class="reel__pill" id="reel-pill" aria-pressed="false">Pausar <span class="toggle"></span></button>
+  </div>
+</section>
+
+<!-- ============ ESTÚDIO ============ -->
+<section class="studio" id="estudio" data-theme="dark" data-label="Estúdio">
+  <span class="paren studio__label">( O Estúdio )</span>
+  <div class="studio__grid">
+    <figure class="studio__small">
+      <img src="posters/app-fitness.jpg" alt="Tela inicial do app de treino" loading="lazy">
+      <figcaption>ou algo que ainda<br>nem tem nome.</figcaption>
+    </figure>
+    <div class="studio__main">
+      <p class="studio__text reveal-lines">A WZS Studio nasceu em Veranópolis com uma ideia simples: o negócio local merece um site tão bom quanto o das grandes marcas. Um cardápio, uma agenda, um sistema, uma vitrine...</p>
+      <figure class="studio__big"><img src="posters/forja-academia.jpg" alt="Site da Forja Academia" loading="lazy"></figure>
+    </div>
+  </div>
+
+  <h2 class="huge reveal-lines">A forma segue<br>o negócio.</h2>
+  <div class="cols">
+    <span>Eu faço :</span>
+    <ul class="bullets">
+      <li>Sites institucionais</li>
+      <li>Landing pages</li>
+      <li>Sistemas sob medida</li>
+      <li>Cardápios e catálogos online</li>
+      <li>Identidade visual</li>
+    </ul>
+    <p>Sob medida é onde a estratégia<br>encontra o design.</p>
+  </div>
+
+  <div class="float" id="float" aria-hidden="true">
+    <span class="fl fl--letter" data-speed="-0.25" style="left:22%;top:18%">W</span>
+    <span class="fl fl--letter" data-speed="0.35" style="left:70%;top:62%">Z</span>
+    <span class="fl fl--letter" data-speed="-0.4" style="left:40%;top:80%">S</span>
+    <span class="fl fl--letter fl--sm" data-speed="0.5" style="left:84%;top:22%">_</span>
+    <svg class="fl fl--pixels" data-speed="0.2" style="left:58%;top:24%" viewBox="0 0 54 54"><rect width="14" height="14"/><rect x="20" width="14" height="14"/><rect x="40" width="14" height="14"/><rect x="20" y="20" width="14" height="14"/><rect x="40" y="20" width="14" height="14"/><rect x="40" y="40" width="14" height="14"/></svg>
+    <svg class="fl fl--mark" data-speed="-0.15" style="left:28%;top:40%"><use href="#wzs-mark"/></svg>
+    <svg class="fl fl--pixels fl--pixels-sm" data-speed="-0.55" style="left:12%;top:66%" viewBox="0 0 54 54"><rect width="14" height="14"/><rect x="20" width="14" height="14"/><rect x="40" width="14" height="14"/><rect x="20" y="20" width="14" height="14"/><rect x="40" y="20" width="14" height="14"/><rect x="40" y="40" width="14" height="14"/></svg>
+  </div>
+</section>
+
+<!-- ============ QUEM FAZ ============ -->
+<section class="people" data-theme="dark" data-label="Estúdio">
+  <div class="people__grid">
+    <span>WZS sem gente :<br>não existe.</span>
+    <div>
+      <span class="mono">Fundador &amp; desenvolvedor</span>
+      <p>Wesley Zanchettin de Souza</p>
+    </div>
+    <div>
+      <span class="mono">Parceiros</span>
+      <p>Fotógrafo parceiro<br>para as fotos do seu negócio</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GLITCH ============ -->
+<section class="glitch" data-theme="dark" data-label="Estúdio">
+  <video src="videos/hyper-frame.mp4" poster="posters/hyper-frame.jpg" muted loop playsinline preload="none" data-auto></video>
+  <div class="glitch__veil"></div>
+  <div class="glitch__words" id="glitch-words" aria-hidden="true"></div>
+  <p class="glitch__claim">Eu crio sites para<br>negócios prontos para<br>ir além do comum.</p>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="contact" id="contato" data-theme="dark">
+  <div class="contact__row">
+    <div>
+      <h2 class="huge reveal-lines">Vamos começar<br>do zero_</h2>
+      <div class="contact__pills">
+        <a class="pill pill--blue" href="https://wa.me/555497147741?text=Ol%C3%A1!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener">Chamar no WhatsApp <span class="arr">→</span></a>
+        <a class="pill pill--line" href="mailto:wes11zslan@gmail.com?subject=Or%C3%A7amento%20de%20site">Mandar um e-mail <span class="arr">@</span></a>
+      </div>
+    </div>
+    <ul class="contact__list">
+      <li><span class="mono">WhatsApp</span><a href="https://wa.me/555497147741" target="_blank" rel="noopener">+55 54 9714-7741</a></li>
+      <li><span class="mono">Telefone</span><a href="tel:+555497147741">(54) 9714-7741</a></li>
+      <li><span class="mono">E-mail</span><a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a></li>
+      <li><span class="mono">GitHub</span><a href="https://github.com/wzsstudio" target="_blank" rel="noopener">wzsstudio</a></li>
+    </ul>
+  </div>
+
+  <div class="contact__logo" aria-hidden="true"><svg><use href="#wzs-logo"/></svg></div>
+
+  <footer class="foot">
+    <span>©2026 — WZS Studio</span>
+    <span>Sites &amp; sistemas · Veranópolis · RS</span>
+    <span>Feito do zero, sem template</span>
+    <span class="badge badge--light">PT</span>
+  </footer>
+</section>
+
+</main>
+
+<!-- ============ PROJETO ABERTO ============ -->
+<div class="case" id="case" role="dialog" aria-modal="true" aria-labelledby="case-title" hidden>
+  <button class="case__close" id="case-close">Fechar <span class="x">×</span></button>
+  <div class="case__inner" id="case-inner"></div>
+</div>
+
+<!-- Conteúdo de cada projeto (lido pelo JS ao abrir) -->
+<template id="case-jurisconta">
+  <span class="mono">Sistema web (SaaS) · projeto em destaque</span>
+  <h2 id="case-title">JurisConta</h2>
+  <div class="case__video"><video src="videos/jurisconta-site.mp4" poster="posters/jurisconta-site.jpg" controls muted playsinline autoplay></video></div>
+  <div class="case__cols">
+    <div>
+      <p>Plataforma de gestão para escritórios de advocacia: intimações capturadas do DJEN pelo número da OAB, calculadoras jurídicas com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.</p>
+      <p>No vídeo, a página pública em capítulos: a figura da Justiça em 3D muda de pose a cada etapa enquanto o texto apresenta o produto.</p>
+      <ul class="stack"><li>Node.js</li><li>Express</li><li>MySQL</li><li>Front-end SPA</li><li>IA com RAG</li></ul>
+      <a class="pill pill--blue" href="https://jurisconta.com" target="_blank" rel="noopener">jurisconta.com <span class="arr">↗</span></a>
+    </div>
+    <ol class="chapters">
+      <li><button data-t="0"><time>0:00</time>Abertura com a Justiça em 3D</button></li>
+      <li><button data-t="5"><time>0:05</time>Só as perguntas que movem a fórmula</button></li>
+      <li><button data-t="9"><time>0:09</time>Fórmulas isoladas</button></li>
+      <li><button data-t="12.9"><time>0:12</time>Memória de cálculo</button></li>
+      <li><button data-t="17.5"><time>0:17</time>Intimações pela OAB</button></li>
+      <li><button data-t="21.4"><time>0:21</time>Uma porta para cada rotina</button></li>
+      <li><button data-t="25.4"><time>0:25</time>Plano e teste de sete dias</button></li>
+      <li><button data-t="29.3"><time>0:29</time>Encerramento</button></li>
+      <li><button data-t="34.1"><time>0:34</time>Página de calculadoras</button></li>
+    </ol>
+  </div>
+</template>
+
+<template id="case-dolce">
+  <span class="mono">Site para confeitaria · no ar</span>
+  <h2 id="case-title">Dolce Migliavaca</h2>
+  <div class="case__video"><video src="videos/dolce-migliavaca.mp4" poster="posters/dolce-migliavaca.jpg" controls muted playsinline autoplay></video></div>
+  <div class="case__cols">
+    <div>
+      <p>Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mouse ou o dedo, cardápio arrastável com inércia e pedido direto no WhatsApp, galeria com fotos que se revelam na rolagem e área de tele-entrega. Logo e identidade visual criados para o projeto.</p>
+      <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li><li>Cloudflare Pages</li></ul>
+      <a class="pill pill--blue" href="https://dolce-migliavaca.pages.dev" target="_blank" rel="noopener">dolce-migliavaca.pages.dev <span class="arr">↗</span></a>
+      <p class="note">Modelo 3D <a href="https://sketchfab.com/3d-models/cheese-cake-7290e12a31d04cb3892049f379c4bafb" target="_blank" rel="noopener">“Cheese Cake”</a> por <a href="https://sketchfab.com/RebuilderAI-vrin" target="_blank" rel="noopener">rebuilderai</a> (Sketchfab), licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+    </div>
+    <ol class="chapters">
+      <li><button data-t="0"><time>0:00</time>Topo com cheesecake em 3D</button></li>
+      <li><button data-t="8"><time>0:08</time>Nossa história</button></li>
+      <li><button data-t="12.5"><time>0:12</time>Cardápio arrastável</button></li>
+      <li><button data-t="22.5"><time>0:22</time>Galeria</button></li>
+      <li><button data-t="28"><time>0:28</time>Vitrine 3D</button></li>
+      <li><button data-t="34"><time>0:34</time>Como encomendar e tele-entrega</button></li>
+      <li><button data-t="41.5"><time>0:41</time>Contato</button></li>
+    </ol>
+  </div>
+</template>
+
+<template id="case-hyper">
+  <span class="mono">Site para estúdio de fotografia</span>
+  <h2 id="case-title">Hyper Frame Studio</h2>
+  <div class="case__video"><video src="videos/hyper-frame.mp4" poster="posters/hyper-frame.jpg" controls muted playsinline autoplay></video></div>
+  <div class="case__cols">
+    <div>
+      <p>Site para um estúdio de fotografia de eventos, ensaios e cosplay: abertura com o logo em pixel, mosaico de fotos animado pela rolagem, uma câmera desenhada que vira visor do portfólio, faixa de serviços, ensaio autoral, galeria com filtros e tela cheia, e formulário de contato.</p>
+      <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>GSAP</li><li>ScrollTrigger</li><li>Lenis</li></ul>
+      <p class="note">Fotos: acervo do Hyper Frame Studio.</p>
+    </div>
+    <ol class="chapters">
+      <li><button data-t="0"><time>0:00</time>Abertura com o mosaico de fotos</button></li>
+      <li><button data-t="6"><time>0:06</time>Manifesto e a câmera como visor</button></li>
+      <li><button data-t="11"><time>0:11</time>Mosaico do portfólio</button></li>
+      <li><button data-t="17"><time>0:17</time>Quem somos</button></li>
+      <li><button data-t="20"><time>0:20</time>Serviços</button></li>
+      <li><button data-t="24"><time>0:24</time>Ensaio autoral</button></li>
+      <li><button data-t="30"><time>0:30</time>Primeiros projetos</button></li>
+      <li><button data-t="33"><time>0:33</time>Contato</button></li>
+    </ol>
+  </div>
+</template>
+
+<template id="case-app">
+  <span class="mono">Aplicativo PWA para celular</span>
+  <h2 id="case-title">App de treino</h2>
+  <div class="case__video case__video--phone"><video src="videos/app-fitness.mp4" poster="posters/app-fitness.jpg" controls muted playsinline autoplay></video></div>
+  <div class="case__cols">
+    <div>
+      <p>App de treino instalável na tela do celular: meta semanal com anel de progresso, montagem de treinos a partir de uma biblioteca de exercícios, registro de séries e cargas com cronômetro de descanso, gráficos de evolução, mapa de músculos trabalhados, peso corporal, dieta, sequência de dias e ranking entre amigos.</p>
+      <ul class="stack"><li>PWA</li><li>JavaScript</li><li>Supabase</li><li>Funciona offline</li></ul>
+    </div>
+    <ol class="chapters">
+      <li><button data-t="0"><time>0:00</time>Início e meta da semana</button></li>
+      <li><button data-t="6.8"><time>0:06</time>Treinos</button></li>
+      <li><button data-t="9.8"><time>0:09</time>Treino com cronômetro de descanso</button></li>
+      <li><button data-t="19.1"><time>0:19</time>Demonstração do exercício</button></li>
+      <li><button data-t="25.3"><time>0:25</time>Histórico com gráfico de evolução</button></li>
+      <li><button data-t="31.8"><time>0:31</time>Progresso e músculos trabalhados</button></li>
+      <li><button data-t="41.7"><time>0:41</time>Perfil e personagem</button></li>
+    </ol>
+  </div>
+</template>
+
+<template id="case-forja">
+  <span class="mono">Site institucional / landing page</span>
+  <h2 id="case-title">Forja Academia</h2>
+  <div class="case__video"><video src="videos/forja-academia.mp4" poster="posters/forja-academia.jpg" controls muted playsinline autoplay></video></div>
+  <div class="case__cols">
+    <div>
+      <p>Site para academia com halter 3D que gira conforme a rolagem, vídeo de fundo no topo, modalidades em cards expansíveis, grade de horários interativa, perguntas frequentes, mapa e chamada para aula experimental pelo WhatsApp.</p>
+      <ul class="stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Three.js</li><li>Responsivo</li></ul>
+      <p class="note">Marca fictícia criada para o portfólio. Fotos e vídeo de fundo do Pexels (licença livre).</p>
+    </div>
+    <ol class="chapters">
+      <li><button data-t="0"><time>0:00</time>Topo com vídeo de fundo</button></li>
+      <li><button data-t="3.8"><time>0:03</time>Halter 3D guiado pela rolagem</button></li>
+      <li><button data-t="17.5"><time>0:17</time>Modalidades em cards</button></li>
+      <li><button data-t="26"><time>0:26</time>Estrutura</button></li>
+      <li><button data-t="29.7"><time>0:29</time>Como funciona</button></li>
+      <li><button data-t="33"><time>0:33</time>Grade de horários</button></li>
+      <li><button data-t="41.4"><time>0:41</time>Planos</button></li>
+      <li><button data-t="46"><time>0:46</time>Perguntas frequentes</button></li>
+      <li><button data-t="50.8"><time>0:50</time>Mapa e contato</button></li>
+      <li><button data-t="54.4"><time>0:54</time>Chamada final</button></li>
+    </ol>
+  </div>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>

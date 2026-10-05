@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="315 212 444 442"><rect x="315" y="212" width="444" height="442" rx="60" fill="#0f1a2b"/><defs><clipPath id="disc"><circle cx="537" cy="432" r="206.5"/></clipPath></defs><g fill="none" stroke="#eef1f6" stroke-width="13">
+<circle cx="537" cy="432" r="200" transform="rotate(-90 537 432)"/>
+<g clip-path="url(#disc)"><g><g><circle cx="537" cy="432" r="200"/><circle cx="581.44" cy="432" r="200"/><circle cx="625.89" cy="432" r="200"/><circle cx="670.33" cy="432" r="200"/><circle cx="714.78" cy="432" r="200"/><circle cx="759.22" cy="432" r="200"/><circle cx="803.67" cy="432" r="200"/><circle cx="848.11" cy="432" r="200"/><circle cx="892.56" cy="432" r="200"/><circle cx="937.00" cy="432" r="200"/></g></g></g>
+</g></svg>

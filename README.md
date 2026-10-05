@@ -28,6 +28,16 @@ HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (
 
 > Modelo 3D [“Cheese Cake”](https://sketchfab.com/3d-models/cheese-cake-7290e12a31d04cb3892049f379c4bafb) por [rebuilderai](https://sketchfab.com/RebuilderAI-vrin) (Sketchfab), licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br).
 
+## Hyper Frame Studio — site para estúdio de fotografia
+
+![Prévia do site Hyper Frame Studio](previews/hyper-frame.gif)
+
+Site para estúdio de fotografia de eventos, ensaios e cosplay: abertura com o logo em pixel, mosaico de fotos animado pela rolagem, câmera desenhada que vira visor do portfólio, serviços, ensaio autoral, galeria com filtros e formulário de contato.
+
+HTML · CSS · JavaScript · GSAP · ScrollTrigger · Lenis — [vídeo completo (0:36)](videos/hyper-frame.mp4)
+
+> Fotos: acervo do Hyper Frame Studio.
+
 ## Forja Academia — site para academia
 
 ![Prévia da Forja Academia](previews/forja-academia.gif)
@@ -45,3 +55,12 @@ HTML · CSS · JavaScript · Three.js — [vídeo completo (0:56)](videos/forja-
 Meta semanal, montagem de treinos, registro de séries e cargas com cronômetro, evolução por exercício, músculos trabalhados, dieta, sequência de dias e ranking entre amigos.
 
 PWA · JavaScript · Supabase — [vídeo completo (0:49)](videos/app-fitness.mp4)
+
+---
+
+## Orçamento
+
+Faça já seu orçamento:
+
+- WhatsApp: [+55 54 9714-7741](https://wa.me/555497147741)
+- E-mail: [wes11zslan@gmail.com](mailto:wes11zslan@gmail.com)
