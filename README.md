@@ -10,13 +10,11 @@ Demonstrações em vídeo de sites e apps que desenvolvi.
 
 ⭐ **Projeto em destaque** · [jurisconta.com](https://jurisconta.com)
 
-![Prévia do JurisConta](previews/jurisconta-tour.gif)
+![Prévia do JurisConta](previews/jurisconta-site.gif)
 
 Plataforma web de gestão jurídica: intimações capturadas do DJEN pelo número da OAB, calculadoras com memória de cálculo, assistente que cita a fonte oficial, modelos que viram .docx, casos, agenda e indicadores.
 
-Node.js · Express · MySQL · IA com RAG — [apresentação completa (1:53)](videos/jurisconta-tour.mp4) · [recursos em detalhe (1:16)](videos/jurisconta.mp4) · [site de apresentação (0:45)](videos/jurisconta-site.mp4)
-
-> Dados de clientes e números de processo aparecem desfocados.
+Node.js · Express · MySQL · IA com RAG — [vídeo do site de apresentação (0:45)](videos/jurisconta-site.mp4)
 
 ## Dolce Migliavaca — site para confeitaria
 
