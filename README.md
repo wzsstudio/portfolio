@@ -1,6 +1,6 @@
 # WZS Studio · Portfólio
 
-Portfólio de **Wesley Zanchettin de Souza**, desenvolvedor front-end em Veranópolis, RS. Demonstrações em vídeo de sites, landing pages e sistemas escritos do zero.
+Portfólio de **Wesley Zanchettin de Souza**, desenvolvedor front-end de Vila Flores, RS, atendendo toda a região. Demonstrações em vídeo de sites, landing pages e sistemas escritos do zero.
 
 Este próprio site é HTML, CSS e JavaScript puros, com GSAP, Lenis e um terminal interativo.
 
@@ -26,7 +26,7 @@ Node.js · Express · MySQL · IA com RAG — [vídeo do site de apresentação 
 
 Site de uma página para confeitaria caseira: cheesecake em 3D que gira com o mouse ou o dedo, cardápio arrastável com pedido direto no WhatsApp, galeria com revelação na rolagem e área de tele-entrega. Logo e identidade visual criados para o projeto.
 
-HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (0:46)](videos/dolce-migliavaca.mp4)
+HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (0:19)](videos/dolce-migliavaca.mp4)
 
 > Modelo 3D [“Cheese Cake”](https://sketchfab.com/3d-models/cheese-cake-7290e12a31d04cb3892049f379c4bafb) por [rebuilderai](https://sketchfab.com/RebuilderAI-vrin) (Sketchfab), licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br).
 
@@ -36,7 +36,7 @@ HTML · CSS · JavaScript · Three.js · Cloudflare Pages — [vídeo completo (
 
 Site para estúdio de fotografia de eventos, ensaios e cosplay: abertura com o logo em pixel, mosaico de fotos animado pela rolagem, câmera desenhada que vira visor do portfólio, serviços, ensaio autoral, galeria com filtros e formulário de contato.
 
-HTML · CSS · JavaScript · GSAP · ScrollTrigger · Lenis — [vídeo completo (0:36)](videos/hyper-frame.mp4)
+HTML · CSS · JavaScript · GSAP · ScrollTrigger · Lenis — [vídeo completo (0:38)](videos/hyper-frame.mp4)
 
 > Fotos: acervo do Hyper Frame Studio.
 

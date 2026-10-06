@@ -144,7 +144,6 @@
   burger.addEventListener('click', () => setMenu(menu.hidden));
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
     const id = a.getAttribute('href');
-    if (id === '#privacidade') { e.preventDefault(); const p = $('#privacidade'); p.hidden = !p.hidden; return; }
     if (id.length < 2 || !$(id)) return;
     e.preventDefault();
     if (!menu.hidden) setMenu(false);
@@ -236,7 +235,7 @@
   const tOut = $('#term-out'), tIn = $('#term-in'), tForm = $('#term-form');
   const cmds = {
     ajuda: () => 'comandos: <span class="ok">sobre</span>, <span class="ok">stack</span>, <span class="ok">projetos</span>, <span class="ok">contato</span>, <span class="ok">orcamento</span>, <span class="ok">limpar</span>',
-    sobre: () => 'Wesley Zanchettin de Souza\ndesenvolvedor front-end · Veranópolis, RS\nsites, landing pages e sistemas escritos do zero.',
+    sobre: () => 'Wesley Zanchettin de Souza\ndesenvolvedor front-end · Vila Flores, RS\natendo toda a região\nsites, landing pages e sistemas escritos do zero.',
     stack: () => 'front:  HTML, CSS, JavaScript, Three.js, GSAP\nback:   Node.js, Express, MySQL, Supabase\nextra:  PWA, Git, Cloudflare Pages, GitHub Pages',
     projetos: () => ['jurisconta', 'dolce', 'hyper', 'app', 'forja'].map((id, i) => `0${i + 1}  <a href="#${id}" data-open="${id}">${{ jurisconta: 'JurisConta', dolce: 'Dolce Migliavaca', hyper: 'Hyper Frame Studio', app: 'App de treino', forja: 'Forja Academia' }[id]}</a>`).join('\n') + '\n(clique para abrir)',
     contato: () => `whatsapp  <a href="https://wa.me/555497147741" target="_blank" rel="noopener">+55 54 9714-7741</a>\ne-mail    <a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a>`,
