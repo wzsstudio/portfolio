@@ -249,16 +249,33 @@ code { font: 400 14px/20px var(--mono); color: var(--code-str); background: var(
 .works__all { display: inline-flex; align-items: center; gap: 8px; font: 600 30px/36px var(--sans); letter-spacing: -.04em; transition: color .7s var(--ease); }
 .works__all:hover { color: var(--blue); }
 
-/* ---------- Showreel ---------- */
-.reel { background: var(--bg); height: 220vh; position: relative; }
-.reel__frame { position: sticky; top: 0; height: 100svh; overflow: hidden; clip-path: inset(18% 22% 18% 22% round 16px); will-change: clip-path; }
+/* ---------- Showreel: o card cresce até ocupar a tela ---------- */
+.reel { position: relative; height: 240vh; background: var(--bg); }
+.reel__sticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+.reel__frame { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 24px; transform: scale(.58); transform-origin: 50% 50%; will-change: transform, border-radius; background: var(--bg-deep); }
 .reel__frame video { width: 100%; height: 100%; object-fit: cover; }
-.reel__pill { position: absolute; top: 96px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 8px; padding: 4px 8px 4px 12px; border-radius: 9999px; background: var(--bg-deep); color: var(--text); }
+.reel__shade { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(0deg, rgba(10, 18, 32, .85), rgba(10, 18, 32, 0)); pointer-events: none; }
+.reel__bars { position: absolute; left: var(--g); right: var(--g); bottom: 24px; display: flex; gap: 8px; }
+.reel__bars button { flex: var(--w, 1); height: 24px; padding: 10px 0; }
+.reel__bars button span { display: block; height: 4px; border-radius: 9999px; background: rgba(238, 241, 246, .25); overflow: hidden; transition: background .5s var(--ease); }
+.reel__bars button span i { display: block; height: 100%; width: 100%; background: var(--text); transform: scaleX(0); transform-origin: left; }
+.reel__bars button:hover span { background: rgba(238, 241, 246, .45); }
+.reel__cap { position: absolute; left: var(--g); bottom: 64px; margin: 0; display: grid; gap: 4px; transition: opacity .5s var(--ease), transform .5s var(--ease); }
+.reel__cap .mono { color: var(--code-str); }
+.reel__cap span:last-child { font: 600 24px/32px var(--sans); letter-spacing: -.03em; max-width: 680px; }
+.reel__cap.swap { opacity: 0; transform: translateY(12px); }
+.reel__pill { position: absolute; top: 24px; right: var(--g); display: flex; align-items: center; gap: 8px; padding: 4px 8px 4px 12px; border-radius: 9999px; background: rgba(10, 18, 32, .72); color: var(--text); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
 .toggle { width: 24px; height: 12px; border-radius: 9999px; background: var(--blue-d); position: relative; }
 .toggle::after { content: ""; position: absolute; top: 2px; right: 2px; width: 8px; height: 8px; border-radius: 9999px; background: #fff; transition: right .7s var(--ease); }
 .reel__pill[aria-pressed="true"] .toggle { background: var(--line); }
 .reel__pill[aria-pressed="true"] .toggle::after { right: 14px; }
-@media (max-width: 767px) { .reel { height: auto; padding: 0 var(--g); } .reel__frame { position: relative; height: auto; aspect-ratio: 16 / 9; clip-path: none; border-radius: 8px; } .reel__pill { top: 12px; } }
+@media (max-width: 767px) {
+  .reel { height: auto; padding: 0 var(--g); }
+  .reel__sticky { position: relative; height: auto; }
+  .reel__frame { aspect-ratio: 16 / 9; height: auto; transform: none; border-radius: 8px; }
+  .reel__cap { bottom: 36px; } .reel__cap span:last-child { font-size: 14px; line-height: 20px; }
+  .reel__bars { bottom: 4px; } .reel__pill { top: 8px; }
+}
 
 /* ---------- Processo (git log) ---------- */
 .process { padding: 96px var(--g); }
@@ -316,19 +333,19 @@ code { font: 400 14px/20px var(--mono); color: var(--code-str); background: var(
 @media (max-width: 767px) { .contact__float span { font-size: 14px; line-height: 20px; } .contact__sub br { display: none; } }
 
 /* ---------- Rodapé azul com colchetes ---------- */
-.footer { background: var(--bg); color: var(--text); border-top: 1px solid var(--line); padding: 48px var(--g) 0; }
+.footer { background: var(--blue-sec); color: var(--text); padding: 48px var(--g) 0; }
 .footer__frame { position: relative; padding: 48px 24px 24px; }
-.footer__frame::before, .footer__frame::after { content: ""; position: absolute; top: 0; bottom: 0; width: 32px; border: 8px solid var(--blue-d); }
+.footer__frame::before, .footer__frame::after { content: ""; position: absolute; top: 0; bottom: 0; width: 32px; border: 8px solid var(--text); }
 .footer__frame::before { left: 0; border-right: 0; }
 .footer__frame::after { right: 0; border-left: 0; }
 .footer__cols { display: grid; gap: 32px; padding: 0 24px; }
 .footer__cols div { display: grid; gap: 8px; align-content: start; font-weight: 500; }
-.footer__cols h3 { font-size: 24px; line-height: 32px; margin-bottom: 8px;  color: var(--blue); }
+.footer__cols h3 { font-size: 24px; line-height: 32px; margin-bottom: 8px; }
 .footer__cols a { width: max-content; max-width: 100%; transition: opacity .7s var(--ease); }
 .footer__cols a:hover { opacity: .7; }
 .footer__logo { margin-top: 64px; padding: 0 24px; color: var(--text); }
 .footer__logo svg { width: 100%; height: auto; aspect-ratio: 1160 / 422; }
-.footer__bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 16px 0; color: var(--muted); text-transform: uppercase; }
+.footer__bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding: 16px 0; color: #c7d2ee; text-transform: uppercase; }
 @media (min-width: 768px) { .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 820px; } }
 
 /* ---------- Projeto aberto ---------- */
@@ -367,5 +384,5 @@ body.case-open, body.menu-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; filter: none; }
-  .reel__frame { clip-path: none; }
+  .reel__frame { transform: none; border-radius: 0; }
 }

@@ -213,13 +213,57 @@
     if (paused) { delete reel.dataset.paused; reel.play().catch(() => {}); } else { reel.dataset.paused = '1'; reel.pause(); }
   });
 
+  /* ---------- Takes do showreel: legenda e barras ---------- */
+  const takes = [
+    { t: 0, p: 'JurisConta', l: 'A Justiça em 3D muda de pose a cada capítulo' },
+    { t: 5.4, p: 'Forja Academia', l: 'O halter desmonta peça por peça na rolagem' },
+    { t: 10.8, p: 'Hyper Frame Studio', l: 'A câmera desenhada vira o visor do portfólio' },
+    { t: 16.7, p: 'Dolce Migliavaca', l: 'Cardápio arrastável com pedido no WhatsApp' },
+    { t: 21.1, p: 'Dolce Migliavaca', l: 'Cheesecake em 3D que gira com o dedo' },
+    { t: 25.5, p: 'App de treino', l: 'Séries, cargas e cronômetro de descanso' },
+  ];
+  const REEL_END = 30.5;
+  const bars = $('#reel-bars'), cap = $('#reel-cap'), capP = $('#reel-proj'), capL = $('#reel-take');
+  const barEls = takes.map((tk, i) => {
+    const end = takes[i + 1] ? takes[i + 1].t : REEL_END;
+    const b = document.createElement('button');
+    b.style.setProperty('--w', (end - tk.t).toFixed(2));
+    b.setAttribute('aria-label', tk.p + ': ' + tk.l);
+    b.innerHTML = '<span><i></i></span>';
+    b.addEventListener('click', () => { reel.currentTime = tk.t + .01; if (!reel.dataset.paused) reel.play().catch(() => {}); });
+    bars.appendChild(b);
+    return { fill: b.querySelector('i'), start: tk.t, end };
+  });
+  let curTake = 0;
+  const reelTick = () => {
+    const t = reel.currentTime;
+    let k = takes.length - 1;
+    while (k > 0 && t < takes[k].t) k--;
+    if (k !== curTake) {
+      curTake = k;
+      cap.classList.add('swap');
+      setTimeout(() => { capP.textContent = takes[k].p; capL.textContent = takes[k].l; cap.classList.remove('swap'); }, 250);
+    }
+    barEls.forEach((s, i) => {
+      const p = i < k ? 1 : i > k ? 0 : Math.min(1, (t - s.start) / (s.end - s.start));
+      s.fill.style.transform = 'scaleX(' + p + ')';
+    });
+    if (!reel.paused) requestAnimationFrame(reelTick);
+  };
+  reel.addEventListener('play', () => requestAnimationFrame(reelTick));
+  reel.addEventListener('seeked', reelTick);
+
   /* ---------- Efeitos ligados à rolagem (GSAP) ---------- */
   if (hasGsap && !reduce) {
     gsap.to('.hero__logo svg', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.utils.toArray('.work').forEach((w, i) => {
       gsap.to(w.querySelector('.work__media'), { yPercent: i % 2 ? -6 : 6, ease: 'none', scrollTrigger: { trigger: w, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
-    if (innerWidth > 767) gsap.to('#reel-frame', { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', scrollTrigger: { trigger: '.reel', start: 'top top', end: '55% bottom', scrub: true } });
+    // Showreel: o card cresce até ocupar a tela, com os cantos se desfazendo
+    if (innerWidth > 767) gsap.fromTo('#reel-frame', { scale: .58, borderRadius: 24 }, {
+      scale: 1, borderRadius: 0, ease: 'power2.inOut',
+      scrollTrigger: { trigger: '.reel', start: 'top 60%', end: '45% bottom', scrub: 1 },
+    });
     // Palavras de código no contato fogem do mouse e flutuam na rolagem
     const floats = $$('#contact-float span');
     floats.forEach((el, i) => gsap.to(el, { y: (i % 2 ? -1 : 1) * 80, ease: 'none', scrollTrigger: { trigger: '.contact', start: 'top bottom', end: 'bottom top', scrub: true } }));

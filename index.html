@@ -226,10 +226,15 @@
 </section>
 
 <!-- ============ SHOWREEL ============ -->
-<section class="reel" aria-label="Showreel">
-  <div class="reel__frame" id="reel-frame">
-    <video id="reel" src="videos/showreel.mp4" poster="posters/showreel.jpg" muted loop playsinline preload="none" data-auto></video>
-    <button class="reel__pill mono" id="reel-pill" aria-pressed="false">Pausar <span class="toggle"></span></button>
+<section class="reel" aria-label="Showreel: os melhores momentos dos projetos">
+  <div class="reel__sticky">
+    <div class="reel__frame" id="reel-frame">
+      <video id="reel" src="videos/showreel.mp4" poster="posters/showreel.jpg" muted loop playsinline preload="none" data-auto></video>
+      <div class="reel__shade" aria-hidden="true"></div>
+      <div class="reel__bars" id="reel-bars" role="group" aria-label="Escolher take"></div>
+      <p class="reel__cap" id="reel-cap" aria-live="polite"><span class="mono" id="reel-proj">JurisConta</span><span id="reel-take">A Justiça em 3D muda de pose a cada capítulo</span></p>
+      <button class="reel__pill mono" id="reel-pill" aria-pressed="false">Pausar <span class="toggle"></span></button>
+    </div>
   </div>
 </section>
 
