@@ -6,7 +6,7 @@
   if (hasGsap) gsap.registerPlugin(ScrollTrigger);
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
-  const WHATS = 'https://wa.me/555497147741?text=Ol%C3%A1%2C%20Wesley!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento.';
+  const WHATS = 'https://wa.me/5554997147741?text=Ol%C3%A1%2C%20Wesley!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento.';
 
   /* ---------- Rolagem suave ---------- */
   let lenis = null;
@@ -282,7 +282,7 @@
     sobre: () => 'Wesley Zanchettin de Souza\ndesenvolvedor front-end · Vila Flores, RS\natendo toda a região\nsites, landing pages e sistemas escritos do zero.',
     stack: () => 'front:  HTML, CSS, JavaScript, Three.js, GSAP\nback:   Node.js, Express, MySQL, Supabase\nextra:  PWA, Git, Cloudflare Pages, GitHub Pages',
     projetos: () => ['jurisconta', 'dolce', 'hyper', 'app', 'forja'].map((id, i) => `0${i + 1}  <a href="#${id}" data-open="${id}">${{ jurisconta: 'JurisConta', dolce: 'Dolce Migliavaca', hyper: 'Hyper Frame Studio', app: 'App de treino', forja: 'Forja Academia' }[id]}</a>`).join('\n') + '\n(clique para abrir)',
-    contato: () => `whatsapp  <a href="https://wa.me/555497147741" target="_blank" rel="noopener">+55 54 9714-7741</a>\ne-mail    <a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a>`,
+    contato: () => `whatsapp  <a href="https://wa.me/5554997147741" target="_blank" rel="noopener">+55 54 99714-7741</a>\ne-mail    <a href="mailto:wes11zslan@gmail.com">wes11zslan@gmail.com</a>`,
     orcamento: () => `<span class="ok">✓</span> ótimo. <a href="${WHATS}" target="_blank" rel="noopener">abrir conversa no WhatsApp →</a>`,
   };
   const alias = { help: 'ajuda', about: 'sobre', projects: 'projetos', contact: 'contato', 'orçamento': 'orcamento', ls: 'projetos', whoami: 'sobre', clear: 'limpar' };

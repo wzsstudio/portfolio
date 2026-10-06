@@ -64,5 +64,5 @@ PWA · JavaScript · Supabase — [vídeo completo (0:49)](videos/app-fitness.mp
 
 Faça já seu orçamento:
 
-- WhatsApp: [+55 54 9714-7741](https://wa.me/555497147741)
+- WhatsApp: [+55 54 99714-7741](https://wa.me/5554997147741)
 - E-mail: [wes11zslan@gmail.com](mailto:wes11zslan@gmail.com)
