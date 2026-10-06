@@ -56,7 +56,7 @@ HTML · CSS · JavaScript · Three.js — [vídeo completo (0:56)](videos/forja-
 
 Meta semanal, montagem de treinos, registro de séries e cargas com cronômetro, evolução por exercício, músculos trabalhados, dieta, sequência de dias e ranking entre amigos.
 
-PWA · JavaScript · Supabase — [vídeo completo (0:49)](videos/app-fitness.mp4)
+PWA · JavaScript · Supabase — [vídeo completo (0:45)](videos/app-fitness.mp4)
 
 ---
 
