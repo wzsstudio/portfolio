@@ -1,6 +1,8 @@
 # WZS Studio · Portfólio
 
-Demonstrações em vídeo de sites e apps que desenvolvi.
+Portfólio de **Wesley Zanchettin de Souza**, desenvolvedor front-end em Veranópolis, RS. Demonstrações em vídeo de sites, landing pages e sistemas escritos do zero.
+
+Este próprio site é HTML, CSS e JavaScript puros, com GSAP, Lenis e um terminal interativo.
 
 **▶ Assista na página do portfólio: https://wzsstudio.github.io/portfolio/**
 
