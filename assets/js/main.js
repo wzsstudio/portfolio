@@ -267,7 +267,7 @@
   const loadTrack = () => loading || (loading = (async () => {
     actx = new (window.AudioContext || window.webkitAudioContext)();
     gain = actx.createGain(); gain.gain.value = 0; gain.connect(actx.destination);
-    const data = await fetch('audio/showreel-off-road-hobbies.mp3').then(r => r.arrayBuffer());
+    const data = await fetch('audio/showreel-off-road-hobbies-v2.mp3').then(r => r.arrayBuffer());
     track = await new Promise((ok, err) => actx.decodeAudioData(data, ok, err));
   })());
   const audioPos = () => ((actx.currentTime - startedAt) % REEL_END + REEL_END) % REEL_END;
