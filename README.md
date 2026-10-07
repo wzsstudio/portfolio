@@ -66,3 +66,7 @@ Faça já seu orçamento:
 
 - WhatsApp: [+55 54 99714-7741](https://wa.me/5554997147741)
 - E-mail: [wzs.studio11@gmail.com](mailto:wzs.studio11@gmail.com)
+
+---
+
+Trilha do showreel: [“Off Road Hobbies”](https://pixabay.com/music/rock-off-road-hobbies-487682/), de WelbornWorks, via Pixabay (Pixabay Content License). O vídeo foi montado na grade da música: 85,33 BPM, um take a cada 2 compassos.

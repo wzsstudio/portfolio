@@ -214,15 +214,19 @@
   });
 
   /* ---------- Takes do showreel: legenda e barras ---------- */
+  // O vídeo foi montado na grade da música (85,33 BPM): cada take dura 2 compassos = 5,62522 s,
+  // e toda troca de projeto cai no primeiro tempo do compasso.
+  const TAKE = 5.62522, REEL_END = 8 * TAKE;
   const takes = [
-    { t: 0, p: 'JurisConta', l: 'A Justiça em 3D muda de pose a cada capítulo' },
-    { t: 5.4, p: 'Forja Academia', l: 'O halter desmonta peça por peça na rolagem' },
-    { t: 10.8, p: 'Hyper Frame Studio', l: 'A câmera desenhada vira o visor do portfólio' },
-    { t: 16.7, p: 'Dolce Migliavaca', l: 'Cardápio arrastável com pedido no WhatsApp' },
-    { t: 21.1, p: 'Dolce Migliavaca', l: 'Cheesecake em 3D que gira com o dedo' },
-    { t: 25.5, p: 'App de treino', l: 'Séries, cargas e cronômetro de descanso' },
-  ];
-  const REEL_END = 30.5;
+    { p: 'JurisConta', l: 'A Justiça em 3D muda de pose a cada capítulo' },
+    { p: 'Forja Academia', l: 'O halter desmonta peça por peça na rolagem' },
+    { p: 'Hyper Frame Studio', l: 'A câmera desenhada vira o visor do portfólio' },
+    { p: 'Dolce Migliavaca', l: 'Cardápio arrastável com pedido no WhatsApp' },
+    { p: 'App de treino', l: 'Séries, cargas e cronômetro de descanso' },
+    { p: 'Hyper Frame Studio', l: 'Faixa de serviços que corre pela tela' },
+    { p: 'Dolce Migliavaca', l: 'Cheesecake em 3D que gira com o dedo' },
+    { p: 'Forja Academia', l: 'Modalidades em cards que se abrem' },
+  ].map((tk, i) => ({ ...tk, t: i * TAKE }));
   const bars = $('#reel-bars'), cap = $('#reel-cap'), capP = $('#reel-proj'), capL = $('#reel-take');
   const barEls = takes.map((tk, i) => {
     const end = takes[i + 1] ? takes[i + 1].t : REEL_END;
@@ -252,6 +256,68 @@
   };
   reel.addEventListener('play', () => requestAnimationFrame(reelTick));
   reel.addEventListener('seeked', reelTick);
+
+  /* ---------- Trilha do showreel ----------
+     "Off Road Hobbies", de WelbornWorks (Pixabay, licença livre). O trecho tem os mesmos 16 compassos do vídeo.
+     O navegador só libera som depois de um clique, então a música entra pelo botão "Som".
+     A música manda no tempo: o vídeo é realinhado a ela, e ela sobe e desce suave ao entrar e sair da seção. */
+  const soundBtn = $('#reel-sound');
+  const VOL = 0.75, FADE_IN = 1.4, FADE_OUT = 0.6;
+  let actx = null, gain = null, track = null, srcNode = null, startedAt = 0, soundOn = false, loading = null;
+  const loadTrack = () => loading || (loading = (async () => {
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    gain = actx.createGain(); gain.gain.value = 0; gain.connect(actx.destination);
+    const data = await fetch('audio/showreel-off-road-hobbies.mp3').then(r => r.arrayBuffer());
+    track = await new Promise((ok, err) => actx.decodeAudioData(data, ok, err));
+  })());
+  const audioPos = () => ((actx.currentTime - startedAt) % REEL_END + REEL_END) % REEL_END;
+  const startAudio = () => {
+    if (!soundOn || !track || reel.paused) return;
+    if (actx.state === 'suspended') actx.resume();
+    if (srcNode) { try { srcNode.stop(); } catch (e) {} }
+    srcNode = actx.createBufferSource();
+    srcNode.buffer = track; srcNode.loop = true; srcNode.loopStart = 0; srcNode.loopEnd = REEL_END;
+    srcNode.connect(gain);
+    const at = reel.currentTime % REEL_END;
+    srcNode.start(0, at);
+    startedAt = actx.currentTime - at;
+    gain.gain.cancelScheduledValues(actx.currentTime);
+    gain.gain.setValueAtTime(gain.gain.value, actx.currentTime);
+    gain.gain.linearRampToValueAtTime(VOL, actx.currentTime + FADE_IN);
+  };
+  const stopAudio = () => {
+    if (!srcNode || !actx) return;
+    const s = srcNode; srcNode = null;
+    gain.gain.cancelScheduledValues(actx.currentTime);
+    gain.gain.setValueAtTime(gain.gain.value, actx.currentTime);
+    gain.gain.linearRampToValueAtTime(0, actx.currentTime + FADE_OUT);
+    try { s.stop(actx.currentTime + FADE_OUT + 0.05); } catch (e) {}
+  };
+  // mantém o vídeo colado na música (corrige se escorregar mais de 80 ms)
+  setInterval(() => {
+    if (!srcNode || reel.paused || reel.seeking) return;
+    const a = audioPos(), v = reel.currentTime;
+    let d = v - a; if (d > REEL_END / 2) d -= REEL_END; if (d < -REEL_END / 2) d += REEL_END;
+    if (Math.abs(d) > 0.08) reel.currentTime = a;
+  }, 250);
+  const setSound = async on => {
+    soundOn = on;
+    soundBtn.setAttribute('aria-pressed', on);
+    soundBtn.querySelector('.reel__lbl').textContent = on ? 'Som ligado' : 'Ligar som';
+    soundBtn.querySelector('i').className = on ? 'ph ph-speaker-high' : 'ph ph-speaker-slash';
+    if (!on) { stopAudio(); return; }
+    soundBtn.classList.add('is-loading');
+    try { await loadTrack(); } catch (e) { soundBtn.classList.remove('is-loading'); soundOn = false; soundBtn.querySelector('.reel__lbl').textContent = 'Som indisponível'; return; }
+    soundBtn.classList.remove('is-loading');
+    if (actx.state === 'suspended') await actx.resume();
+    if (reel.paused && !reel.dataset.paused) await reel.play().catch(() => {});
+    startAudio();
+  };
+  soundBtn.addEventListener('click', () => setSound(!soundOn));
+  reel.addEventListener('play', () => { if (soundOn) startAudio(); });
+  reel.addEventListener('pause', stopAudio);                      // sai da seção, abre um projeto ou pausa
+  reel.addEventListener('seeked', () => { if (srcNode && Math.abs(reel.currentTime - audioPos()) > 0.08) startAudio(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stopAudio(); else if (soundOn && !reel.paused) startAudio(); });
 
   /* ---------- Efeitos ligados à rolagem (GSAP) ---------- */
   if (hasGsap && !reduce) {
