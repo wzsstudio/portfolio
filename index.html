@@ -23,6 +23,9 @@
 {"@type":"Question","name":"O site funciona bem no celular?","acceptedAnswer":{"@type":"Answer","text":"Sim. Todo projeto começa pela tela do celular, porque é de lá que vem a maior parte das visitas de um negócio local."}}
 ]}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"WZS Studio","url":"https://wzsstudio.github.io/portfolio/","image":"https://wzsstudio.github.io/portfolio/posters/showreel.jpg","logo":"https://wzsstudio.github.io/portfolio/assets/logo.png","description":"Sites, landing pages e sistemas escritos do zero, rápidos e prontos para o celular.","telephone":"+55 54 99714-7741","email":"wzs.studio11@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Vila Flores","addressRegion":"RS","addressCountry":"BR"},"areaServed":"Vila Flores e região, RS","founder":{"@type":"Person","name":"Wesley Zanchettin de Souza","jobTitle":"Desenvolvedor front-end"},"sameAs":["https://www.instagram.com/wzs_studio/","https://github.com/wzsstudio"]}
+</script>
 </head>
 <body class="is-loading">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -50,13 +53,15 @@
 
 <!-- ============ MENU EM PÍLULA ============ -->
 <header class="island" id="island">
-  <a class="island__brand" href="#inicio" aria-label="WZS Studio, voltar ao início">WZS<span>_</span></a>
+  <a class="island__brand" href="#inicio" aria-label="WZS Studio, voltar ao início" translate="no">WZS<span>_</span></a>
   <nav class="island__links" aria-label="Seções">
+    <a href="#sobre" data-scramble>Sobre</a>
     <a href="#servicos" data-scramble>Serviços</a>
     <a href="#projetos" data-scramble>Projetos</a>
     <a href="#processo" data-scramble>Processo</a>
     <a href="#contato" data-scramble>Contato</a>
   </nav>
+  <a class="island__ig" href="https://www.instagram.com/wzs_studio/" target="_blank" rel="noopener" aria-label="Instagram @wzs_studio (abre em nova aba)"><i class="ph ph-instagram-logo" aria-hidden="true"></i></a>
   <a class="btn btn--sm" href="https://wa.me/5554997147741?text=Ol%C3%A1%2C%20Wesley!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" data-magnetic>Pedir orçamento</a>
   <button class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span></button>
 </header>
@@ -69,6 +74,7 @@
     <li><a href="#processo"><span class="mono">04</span>Processo</a></li>
     <li><a href="#contato"><span class="mono">05</span>Contato</a></li>
   </ul>
+  <a class="menu__ig mono" href="https://www.instagram.com/wzs_studio/" target="_blank" rel="noopener"><i class="ph ph-instagram-logo" aria-hidden="true"></i><span translate="no">@wzs_studio</span> no Instagram<i class="ph ph-arrow-up-right" aria-hidden="true"></i></a>
 </nav>
 
 <main id="conteudo">
@@ -87,7 +93,7 @@
       <p class="hero__proof mono"><i class="ph ph-check-circle" aria-hidden="true"></i>5 projetos em vídeo nesta página · orçamento sem compromisso</p>
     </div>
 
-    <div class="editor" id="editor" aria-label="Exemplo de código: um site sendo criado">
+    <div class="editor" id="editor" translate="no" aria-label="Exemplo de código: um site sendo criado">
       <div class="editor__bar">
         <span class="editor__dots"><i></i><i></i><i></i></span>
         <span class="editor__tab mono">seu-negocio.js</span>
@@ -102,8 +108,8 @@
 </section>
 
 <!-- ============ FAIXA DE TECNOLOGIAS ============ -->
-<div class="marquee" aria-label="Tecnologias que eu uso">
-  <div class="marquee__track mono">
+<div class="marquee" role="region" aria-label="Tecnologias que eu uso">
+  <div class="marquee__track mono" translate="no">
     <span>HTML</span><b>/</b><span>CSS</span><b>/</b><span>JavaScript</span><b>/</b><span>Three.js</span><b>/</b><span>GSAP</span><b>/</b><span>Node.js</span><b>/</b><span>Express</span><b>/</b><span>MySQL</span><b>/</b><span>Supabase</span><b>/</b><span>PWA</span><b>/</b><span>Git</span><b>/</b>
     <span aria-hidden="true">HTML</span><b>/</b><span aria-hidden="true">CSS</span><b>/</b><span aria-hidden="true">JavaScript</span><b>/</b><span aria-hidden="true">Three.js</span><b>/</b><span aria-hidden="true">GSAP</span><b>/</b><span aria-hidden="true">Node.js</span><b>/</b><span aria-hidden="true">Express</span><b>/</b><span aria-hidden="true">MySQL</span><b>/</b><span aria-hidden="true">Supabase</span><b>/</b><span aria-hidden="true">PWA</span><b>/</b><span aria-hidden="true">Git</span><b>/</b>
   </div>
@@ -140,35 +146,35 @@
     <header class="svc__head"><span class="svc__num mono">[01]</span><h3>Sites institucionais</h3></header>
     <div class="svc__body">
       <p><strong>Uma vitrine que trabalha por você.</strong> Mostra o que você faz, onde fica e como contratar, com o botão do WhatsApp sempre à mão.</p>
-      <figure><img src="posters/forja-academia.jpg" alt="Site da Forja Academia" loading="lazy"></figure>
+      <figure><img src="posters/forja-academia.jpg" width="1280" height="720" alt="Site da Forja Academia" loading="lazy"></figure>
     </div>
   </article>
   <article class="svc">
     <header class="svc__head"><span class="svc__num mono">[02]</span><h3>Landing pages</h3></header>
     <div class="svc__body">
       <p><strong>Uma oferta, um botão.</strong> Páginas feitas para campanha e anúncio, com o texto e o visual apontando para uma única ação.</p>
-      <figure><img src="posters/dolce-migliavaca.jpg" alt="Site da confeitaria Dolce Migliavaca" loading="lazy"></figure>
+      <figure><img src="posters/dolce-migliavaca.jpg" width="1600" height="900" alt="Site da confeitaria Dolce Migliavaca" loading="lazy"></figure>
     </div>
   </article>
   <article class="svc">
     <header class="svc__head"><span class="svc__num mono">[03]</span><h3>Sistemas sob medida</h3></header>
     <div class="svc__body">
       <p><strong>A planilha vira sistema.</strong> Agendas, cálculos, catálogos e áreas de cliente, com banco de dados e login quando precisa.</p>
-      <figure><img src="posters/jurisconta-site.jpg" alt="Site do sistema JurisConta" loading="lazy"></figure>
+      <figure><img src="posters/jurisconta-site.jpg" width="1280" height="720" alt="Site do sistema JurisConta" loading="lazy"></figure>
     </div>
   </article>
   <article class="svc">
     <header class="svc__head"><span class="svc__num mono">[04]</span><h3>Animação e 3D</h3></header>
     <div class="svc__body">
       <p><strong>O detalhe que faz lembrar.</strong> Microinterações, rolagem animada e objetos 3D que o visitante gira com o dedo.</p>
-      <figure><img src="posters/hyper-frame.jpg" alt="Site do Hyper Frame Studio" loading="lazy"></figure>
+      <figure><img src="posters/hyper-frame.jpg" width="1600" height="900" alt="Site do Hyper Frame Studio" loading="lazy"></figure>
     </div>
   </article>
   <article class="svc">
     <header class="svc__head"><span class="svc__num mono">[05]</span><h3>Apps para celular</h3></header>
     <div class="svc__body">
       <p><strong>Instala sem loja de aplicativos.</strong> PWAs que abrem pelo ícone na tela inicial e funcionam até sem internet.</p>
-      <figure class="svc__phone"><img src="posters/app-fitness.jpg" alt="Tela do app de treino" loading="lazy"></figure>
+      <figure class="svc__phone"><img src="posters/app-fitness.jpg" width="560" height="1080" alt="Tela do app de treino" loading="lazy"></figure>
     </div>
   </article>
 </section>
@@ -245,7 +251,7 @@
 <!-- ============ PROCESSO (git log) ============ -->
 <section class="process" id="processo" data-section="processo">
   <h2 class="bracket reveal">[ Como funciona ]</h2>
-  <p class="process__cmd mono reveal"><span class="prompt">~/seu-site $</span> git log --oneline</p>
+  <p class="process__cmd mono reveal" translate="no"><span class="prompt">~/seu-site $</span> git log --oneline</p>
   <ol class="log">
     <li class="log__item reveal">
       <span class="log__hash mono">a1f3c9e</span>
@@ -272,16 +278,17 @@
       <button class="chip mono" data-cmd="stack">stack</button>
       <button class="chip mono" data-cmd="projetos">projetos</button>
       <button class="chip mono" data-cmd="orcamento">orcamento</button>
+      <button class="chip mono" data-cmd="instagram">instagram</button>
       <button class="chip mono" data-cmd="limpar">limpar</button>
     </div>
   </div>
-  <div class="term reveal" id="term">
+  <div class="term reveal" id="term" translate="no">
     <div class="editor__bar"><span class="editor__dots"><i></i><i></i><i></i></span><span class="editor__tab mono">wzs@studio: ~</span></div>
     <div class="term__out mono" id="term-out" aria-live="polite"></div>
     <form class="term__line mono" id="term-form" autocomplete="off">
       <label for="term-in" class="prompt">wzs@studio:~$</label>
       <input id="term-in" type="text" spellcheck="false" autocapitalize="off" aria-describedby="term-hint">
-      <span id="term-hint" class="sr-only">Comandos: ajuda, sobre, stack, projetos, contato, orcamento, limpar</span>
+      <span id="term-hint" class="sr-only">Comandos: ajuda, sobre, stack, projetos, contato, orcamento, instagram, limpar</span>
     </form>
   </div>
 </section>
@@ -303,7 +310,7 @@
 
 <!-- ============ CONTATO ============ -->
 <section class="contact" id="contato" data-section="contato">
-  <div class="contact__float" id="contact-float" aria-hidden="true">
+  <div class="contact__float" id="contact-float" aria-hidden="true" translate="no">
     <span style="left:8%;top:14%">&lt;Contato /&gt;</span>
     <span style="left:64%;top:10%">fetch("/orcamento")</span>
     <span style="left:76%;top:34%">git push origin main</span>
@@ -319,6 +326,21 @@
       <a class="btn btn--blue" href="https://wa.me/5554997147741?text=Ol%C3%A1%2C%20Wesley!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento." target="_blank" rel="noopener" data-magnetic><i class="ph ph-whatsapp-logo" aria-hidden="true"></i>Pedir orçamento no WhatsApp</a>
       <a class="btn btn--ghost" href="mailto:wzs.studio11@gmail.com?subject=Or%C3%A7amento%20de%20site" data-magnetic><i class="ph ph-envelope-simple" aria-hidden="true"></i>Mandar um e-mail</a>
     </div>
+    <a class="ig" id="ig-card" href="https://www.instagram.com/wzs_studio/" target="_blank" rel="noopener" aria-label="Seguir @wzs_studio no Instagram (abre em nova aba)" data-cursor="Seguir">
+      <span class="ig__head">
+        <span class="ig__avatar"><img src="assets/ig/perfil.png" width="160" height="160" alt=""></span>
+        <span class="ig__who">
+          <span class="ig__handle" id="ig-handle" translate="no">@wzs_studio</span>
+          <span class="mono">Projetos e bastidores</span>
+        </span>
+        <span class="ig__follow"><i class="ph ph-instagram-logo" aria-hidden="true"></i>Seguir</span>
+      </span>
+      <span class="ig__grid" aria-hidden="true">
+        <img src="assets/ig/post-projetos.jpg" width="360" height="450" alt="" loading="lazy">
+        <img src="assets/ig/post-servicos.jpg" width="360" height="450" alt="" loading="lazy">
+        <img src="assets/ig/post-quemsou.jpg" width="360" height="450" alt="" loading="lazy">
+      </span>
+    </a>
   </div>
 </section>
 
@@ -340,6 +362,11 @@
         <a href="#servicos">Serviços</a>
         <a href="#projetos">Projetos</a>
         <a href="#perguntas">Perguntas</a>
+      </div>
+      <div>
+        <h3>[ Redes ]</h3>
+        <a href="https://www.instagram.com/wzs_studio/" target="_blank" rel="noopener" data-scramble><i class="ph ph-instagram-logo" aria-hidden="true"></i>@wzs_studio</a>
+        <a href="https://github.com/wzsstudio" target="_blank" rel="noopener" data-scramble><i class="ph ph-github-logo" aria-hidden="true"></i>GitHub</a>
       </div>
     </div>
     <div class="footer__logo" aria-hidden="true"><svg><use href="#wzs-logo"/></svg></div>

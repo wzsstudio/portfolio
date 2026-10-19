@@ -7,6 +7,9 @@
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
   const WHATS = 'https://wa.me/5554997147741?text=Ol%C3%A1%2C%20Wesley!%20Vi%20seu%20portf%C3%B3lio%20e%20quero%20um%20or%C3%A7amento.';
+  const INSTA = 'https://www.instagram.com/wzs_studio/';
+  const hashCase = location.hash.slice(1);
+  const deepCase = !!hashCase && !!document.getElementById('case-' + hashCase);
 
   /* ---------- Rolagem suave ---------- */
   let lenis = null;
@@ -29,18 +32,22 @@
   const lines = [
     '<span class="ok">$</span> npm run dev',
     '> wzs-portfolio@2026 dev',
-    '  compilando html, css e javascript...',
-    '  carregando 5 projetos e 1 showreel...',
+    '  compilando html, css e javascript…',
+    '  carregando 5 projetos e 1 showreel…',
     '<span class="ok">✓</span> pronto. abrindo o portfólio',
   ];
   const finish = () => {
     loader.remove();
     document.body.classList.remove('is-loading');
-    lenis && lenis.start();
+    if (lenis && !document.body.classList.contains('case-open')) lenis.start();
     if (hasGsap) ScrollTrigger.refresh();
     typeCode();
   };
-  if (reduce || !hasGsap) { finish(); }
+  // o carregamento aparece só na primeira visita da sessão, e nunca quando o link já abre um projeto
+  let seen = false;
+  try { seen = sessionStorage.getItem('wzs-loaded') === '1'; sessionStorage.setItem('wzs-loaded', '1'); } catch (e) {}
+  // microtask: espera o resto do script definir o editor (typeCode) antes de rodar
+  if (reduce || !hasGsap || seen || deepCase) { queueMicrotask(finish); }
   else {
     let i = 0;
     const tick = setInterval(() => { if (i < lines.length) log.innerHTML += (i ? '\n' : '') + lines[i++]; }, 260);
@@ -122,10 +129,12 @@
   /* ---------- Menu em pílula: some ao descer, volta ao subir; marca a seção atual ---------- */
   const island = $('#island');
   let lastY = 0;
-  if (lenis) lenis.on('scroll', ({ scroll }) => {
-    island.classList.toggle('is-hidden', scroll > lastY && scroll > 240 && $('#menu').hidden);
-    lastY = scroll;
-  });
+  const onScrollY = y => {
+    island.classList.toggle('is-hidden', y > lastY && y > 240 && $('#menu').hidden && !island.contains(document.activeElement));
+    lastY = y;
+  };
+  if (lenis) lenis.on('scroll', ({ scroll }) => onScrollY(scroll));
+  else addEventListener('scroll', () => onScrollY(scrollY), { passive: true });
   const navLinks = $$('.island__links a');
   const secIO = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
@@ -168,6 +177,8 @@
     const text = span.textContent;
     el.addEventListener('mouseenter', () => scramble(span, text));
   });
+  const igCard = $('#ig-card'), igHandle = $('#ig-handle');
+  if (igCard && !reduce) igCard.addEventListener('mouseenter', () => scramble(igHandle, '@wzs_studio'));
   const ct = $('[data-scramble-big]');
   if (ct && !reduce) new IntersectionObserver(([e]) => { if (e.isIntersecting) scramble(ct, 'CONTATO', 900); }, { threshold: .6 }).observe(ct);
 
@@ -344,14 +355,15 @@
   /* ---------- Terminal interativo ---------- */
   const tOut = $('#term-out'), tIn = $('#term-in'), tForm = $('#term-form');
   const cmds = {
-    ajuda: () => 'comandos: <span class="ok">sobre</span>, <span class="ok">stack</span>, <span class="ok">projetos</span>, <span class="ok">contato</span>, <span class="ok">orcamento</span>, <span class="ok">limpar</span>',
+    ajuda: () => 'comandos: <span class="ok">sobre</span>, <span class="ok">stack</span>, <span class="ok">projetos</span>, <span class="ok">contato</span>, <span class="ok">orcamento</span>, <span class="ok">instagram</span>, <span class="ok">limpar</span>',
     sobre: () => 'Wesley Zanchettin de Souza\ndesenvolvedor front-end · Vila Flores, RS\natendo toda a região\nsites, landing pages e sistemas escritos do zero.',
     stack: () => 'front:  HTML, CSS, JavaScript, Three.js, GSAP\nback:   Node.js, Express, MySQL, Supabase\nextra:  PWA, Git, Cloudflare Pages, GitHub Pages',
     projetos: () => ['jurisconta', 'dolce', 'hyper', 'app', 'forja'].map((id, i) => `0${i + 1}  <a href="#${id}" data-open="${id}">${{ jurisconta: 'JurisConta', dolce: 'Dolce Migliavaca', hyper: 'Hyper Frame Studio', app: 'App de treino', forja: 'Forja Academia' }[id]}</a>`).join('\n') + '\n(clique para abrir)',
-    contato: () => `whatsapp  <a href="https://wa.me/5554997147741" target="_blank" rel="noopener">+55 54 99714-7741</a>\ne-mail    <a href="mailto:wzs.studio11@gmail.com">wzs.studio11@gmail.com</a>`,
+    contato: () => `whatsapp  <a href="https://wa.me/5554997147741" target="_blank" rel="noopener">+55 54 99714-7741</a>\ne-mail    <a href="mailto:wzs.studio11@gmail.com">wzs.studio11@gmail.com</a>\ninstagram <a href="${INSTA}" target="_blank" rel="noopener">@wzs_studio</a>`,
+    instagram: () => `<span class="ok">✓</span> projetos, bastidores e dicas de site em <a href="${INSTA}" target="_blank" rel="noopener">@wzs_studio →</a>`,
     orcamento: () => `<span class="ok">✓</span> ótimo. <a href="${WHATS}" target="_blank" rel="noopener">abrir conversa no WhatsApp →</a>`,
   };
-  const alias = { help: 'ajuda', about: 'sobre', projects: 'projetos', contact: 'contato', 'orçamento': 'orcamento', ls: 'projetos', whoami: 'sobre', clear: 'limpar' };
+  const alias = { help: 'ajuda', about: 'sobre', projects: 'projetos', contact: 'contato', 'orçamento': 'orcamento', ls: 'projetos', whoami: 'sobre', clear: 'limpar', insta: 'instagram', ig: 'instagram', '@wzs_studio': 'instagram' };
   const print = html => { tOut.insertAdjacentHTML('beforeend', html + '\n'); tOut.scrollTop = tOut.scrollHeight; };
   const exec = raw => {
     const c = raw.trim().toLowerCase();
@@ -370,12 +382,16 @@
   /* ---------- Projeto aberto ---------- */
   const caseEl = $('#case'), caseInner = $('#case-inner'), caseClose = $('#case-close');
   let lastFocus = null;
+  // com o projeto aberto, o resto da página fica inerte: o Tab não escapa do diálogo
+  const behind = [$('main'), $('.footer'), island, $('.skip')];
+  const setInert = on => behind.forEach(el => { if (el) el.inert = on; });
   function openCase(id) {
     const tpl = document.getElementById('case-' + id);
     if (!tpl) return;
     lastFocus = document.activeElement;
     caseInner.replaceChildren(tpl.content.cloneNode(true));
     caseEl.hidden = false; caseEl.scrollTop = 0;
+    setInert(true);
     document.body.classList.add('case-open');
     lenis && lenis.stop();
     playable.forEach(v => v.pause());
@@ -388,6 +404,7 @@
   const closeCase = () => {
     caseInner.querySelectorAll('video').forEach(v => v.pause());
     caseEl.hidden = true; caseInner.replaceChildren();
+    setInert(false);
     document.body.classList.remove('case-open');
     lenis && lenis.start();
     history.replaceState(null, '', location.pathname);
@@ -399,6 +416,5 @@
     if (e.key !== 'Escape') return;
     if (!caseEl.hidden) closeCase(); else if (!menu.hidden) setMenu(false);
   });
-  const hashCase = location.hash.slice(1);
-  if (document.getElementById('case-' + hashCase)) setTimeout(() => openCase(hashCase), reduce ? 0 : 2800);
+  if (deepCase) openCase(hashCase);
 })();
