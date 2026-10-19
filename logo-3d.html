@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WZS Logo 3D</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1a2b; --bg-deep: #0a1220; --line: #22324d;
+    --text: #eef1f6; --muted: #5d6a80; --blue: #3b82f6; --blue-d: #1f5fd6;
+    --g: 16px; --sans: "Geist", system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, monospace;
+  }
+  @media (min-width: 768px) { :root { --g: 32px; } }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: radial-gradient(60% 55% at 50% 48%, #15233a 0%, var(--bg) 55%, var(--bg-deep) 100%);
+    color: var(--text); font: 400 14px/18px var(--sans); letter-spacing: -.01em;
+    -webkit-font-smoothing: antialiased; overflow: hidden;
+  }
+  button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+  .stage { position: fixed; inset: 0; cursor: grab; }
+  .stage.is-dragging { cursor: grabbing; }
+  .stage canvas { display: block; width: 100%; height: 100%; }
+  .glow { position: fixed; left: 50%; bottom: 8vh; width: min(60vw, 520px); height: 80px; transform: translateX(-50%);
+    background: radial-gradient(50% 50% at 50% 50%, rgba(59,130,246,.22), transparent 70%); filter: blur(12px); pointer-events: none; }
+
+  .top { position: fixed; inset: var(--g) var(--g) auto; display: grid; grid-template-columns: 1fr 1fr auto; gap: 16px; pointer-events: none; }
+  .top p { margin: 0; }
+  .top .tag { display: none; }
+  @media (min-width: 900px) { .top { grid-template-columns: 160px 160px 1fr auto; } .top .tag { display: block; } }
+  .top .pill { pointer-events: auto; justify-self: end; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; color: var(--text); text-decoration: none; }
+  .top .pill:hover { border-color: var(--blue); }
+
+  .states { position: fixed; left: var(--g); top: 50%; transform: translateY(-50%); display: grid; gap: 4px; }
+  .states button { font-size: clamp(22px, 2.4vw, 32px); line-height: 1.15; font-weight: 500; color: var(--muted); text-align: left; transition: color .4s; }
+  .states button:hover { color: #8e99ab; }
+  .states button[aria-pressed="true"] { color: var(--text); }
+  .states button span { font: 400 11px var(--mono); color: var(--blue); vertical-align: super; margin-left: 6px; opacity: 0; transition: opacity .4s; }
+  .states button[aria-pressed="true"] span { opacity: 1; }
+  @media (max-width: 640px) { .states { top: auto; bottom: 92px; transform: none; grid-auto-flow: column; gap: 20px; } .states button { font-size: 20px; } }
+
+  .hint { position: fixed; left: 50%; bottom: 52px; transform: translateX(-50%); font: 400 10px var(--mono); letter-spacing: .2em; color: var(--muted); white-space: nowrap; pointer-events: none; }
+  .hint::before, .hint::after { content: ""; display: inline-block; width: 24px; height: 1px; background: var(--line); vertical-align: middle; margin: 0 10px; }
+
+  .bottom { position: fixed; inset: auto var(--g) var(--g); display: flex; justify-content: space-between; align-items: center; gap: 12px; font: 400 11px var(--mono); color: var(--muted); }
+  .chips { display: flex; gap: 8px; align-items: center; }
+  .chip { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--line); outline-offset: 3px; }
+  .chip[aria-pressed="true"] { outline: 1px solid var(--text); }
+  .chip[data-p="gelo"] { background: #eef1f6; }
+  .chip[data-p="gradiente"] { background: linear-gradient(90deg, #eef1f6, #3b82f6); }
+  .chip[data-p="azul"] { background: #3b82f6; }
+  .dl { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; color: var(--text); }
+  .dl:hover { border-color: var(--blue); }
+  .credit { display: none; } @media (min-width: 768px) { .credit { display: block; } }
+  :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <div class="stage" id="stage" role="img" aria-label="Símbolo da WZS Studio em 3D. Arraste para girar."></div>
+
+  <header class="top">
+    <p>WZS<br>Studio</p>
+    <p>Desenvolvedor<br>front-end</p>
+    <p class="tag">Sites escritos do zero para o seu cliente achar,<br>entender e chamar você.</p>
+    <a class="pill" href="index.html">voltar ao site</a>
+  </header>
+
+  <nav class="states" aria-label="Forma do símbolo">
+    <button data-s="logo" aria-pressed="true">Logo<span>01</span></button>
+    <button data-s="camadas" aria-pressed="false">Camadas<span>02</span></button>
+    <button data-s="esfera" aria-pressed="false">Esfera<span>03</span></button>
+  </nav>
+
+  <p class="hint">ARRASTE PARA GIRAR</p>
+
+  <footer class="bottom">
+    <span class="credit">wzs.studio11@gmail.com · Vila Flores, RS</span>
+    <div class="chips" role="group" aria-label="Cor">
+      <button class="chip" data-p="gelo" aria-pressed="true" aria-label="Gelo"></button>
+      <button class="chip" data-p="gradiente" aria-pressed="false" aria-label="Gradiente"></button>
+      <button class="chip" data-p="azul" aria-pressed="false" aria-label="Azul"></button>
+      <button class="dl" id="dl">baixar .glb</button>
+    </div>
+  </footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script type="module">
+  import { mountLogo3D } from "./assets/js/logo3d.js";
+  const logo = mountLogo3D(document.getElementById("stage"));
+  window.logo3d = logo;
+
+  const order = ["logo", "camadas", "esfera"], btns = [...document.querySelectorAll(".states button")];
+  let i = 0, auto = !matchMedia("(prefers-reduced-motion: reduce)").matches, timer;
+  function go(name) {
+    i = order.indexOf(name); logo.setState(name);
+    btns.forEach((b) => b.setAttribute("aria-pressed", b.dataset.s === name));
+  }
+  function loop() { timer = setTimeout(() => { if (!auto) return; go(order[(i + 1) % 3]); loop(); }, 4200); }
+  btns.forEach((b) => b.addEventListener("click", () => { auto = false; clearTimeout(timer); go(b.dataset.s); }));
+  if (auto) loop();
+
+  document.querySelectorAll(".chip").forEach((c) => c.addEventListener("click", () => {
+    logo.setPalette(c.dataset.p);
+    document.querySelectorAll(".chip").forEach((x) => x.setAttribute("aria-pressed", x === c));
+  }));
+  document.getElementById("dl").addEventListener("click", () => logo.exportGLB());
+</script>
+</body>
+</html>

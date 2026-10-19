@@ -137,8 +137,15 @@ code { font: 400 14px/20px var(--mono); color: var(--code-str); background: var(
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
 .hero__proof { display: flex; align-items: center; gap: 8px; margin-top: 24px; }
 .hero__proof i { color: var(--blue); font-size: 16px; }
-.hero__logo { color: var(--surface); }
-.hero__logo svg { width: 100%; height: auto; aspect-ratio: 1160 / 422; }
+.hero__logo { color: var(--surface); display: grid; grid-template-columns: 424fr 725fr; column-gap: .95%; align-items: center; }
+.hero__word { width: 100%; height: auto; aspect-ratio: 725 / 422; }
+/* símbolo: SVG de reserva; vira 3D (assets/js/logo3d.js) quando há WebGL */
+.hero__mark { position: relative; aspect-ratio: 1; }
+.hero__mark-svg { width: 100%; height: 100%; }
+.hero__mark-gl { position: absolute; inset: -26%; cursor: grab; }
+.hero__mark-gl.is-dragging { cursor: grabbing; }
+.hero__mark-gl canvas { display: block; width: 100%; height: 100%; }
+.hero__mark.is-3d .hero__mark-svg { visibility: hidden; }
 @media (min-width: 768px) { .hero__title { font-size: 48px; line-height: 1; } }
 @media (min-width: 1200px) {
   .hero__grid { grid-template-columns: minmax(0, 680px) minmax(0, 1fr); gap: 64px; }

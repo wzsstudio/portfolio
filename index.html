@@ -26,6 +26,12 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"ProfessionalService","name":"WZS Studio","url":"https://wzsstudio.github.io/portfolio/","image":"https://wzsstudio.github.io/portfolio/posters/showreel.jpg","logo":"https://wzsstudio.github.io/portfolio/assets/logo.png","description":"Sites, landing pages e sistemas escritos do zero, rápidos e prontos para o celular.","telephone":"+55 54 99714-7741","email":"wzs.studio11@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Vila Flores","addressRegion":"RS","addressCountry":"BR"},"areaServed":"Vila Flores e região, RS","founder":{"@type":"Person","name":"Wesley Zanchettin de Souza","jobTitle":"Desenvolvedor front-end"},"sameAs":["https://www.instagram.com/wzs_studio/","https://github.com/wzsstudio"]}
 </script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+} }
+</script>
 </head>
 <body class="is-loading">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -104,7 +110,10 @@
     </div>
   </div>
 
-  <div class="hero__logo" aria-hidden="true"><svg><use href="#wzs-logo"/></svg></div>
+  <div class="hero__logo" aria-hidden="true">
+    <div class="hero__mark" id="hero-mark"><svg class="hero__mark-svg"><use href="#wzs-mark"/></svg><div class="hero__mark-gl" id="hero-mark-gl"></div></div>
+    <svg class="hero__word" viewBox="760 222 725 422"><use href="#wzs-logo" x="325" y="222" width="1160" height="422"/></svg>
+  </div>
 </section>
 
 <!-- ============ FAIXA DE TECNOLOGIAS ============ -->
@@ -505,5 +514,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script type="module">
+  // Símbolo 3D do hero: entra como a logo e depois vira a esfera fluindo; clique alterna os estados
+  const gl = document.getElementById('hero-mark-gl');
+  const ok = (() => { try { return !!document.createElement('canvas').getContext('webgl2'); } catch (e) { return false; } })();
+  if (gl && ok) {
+    const { mountLogo3D } = await import('./assets/js/logo3d.js');
+    const logo = mountLogo3D(gl, { state: 'logo' });
+    gl.parentElement.classList.add('is-3d');
+    const order = ['logo', 'camadas', 'esfera'];
+    let i = 0, moved = false;
+    const go = (n) => { i = n; logo.setState(order[i]); };
+    const intro = () => setTimeout(() => go(2), 2200);
+    if (document.body.classList.contains('is-loading')) {
+      new MutationObserver((_, mo) => { if (!document.body.classList.contains('is-loading')) { mo.disconnect(); intro(); } })
+        .observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    } else intro();
+    gl.addEventListener('pointerdown', () => { moved = false; });
+    gl.addEventListener('pointermove', (e) => { if (e.buttons) moved = true; });
+    gl.addEventListener('click', () => { if (!moved) go((i + 1) % order.length); });
+  }
+</script>
 </body>
 </html>

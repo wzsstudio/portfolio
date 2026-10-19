@@ -332,7 +332,7 @@
 
   /* ---------- Efeitos ligados à rolagem (GSAP) ---------- */
   if (hasGsap && !reduce) {
-    gsap.to('.hero__logo svg', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+    gsap.to('.hero__logo', { yPercent: 30, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
     gsap.utils.toArray('.work').forEach((w, i) => {
       gsap.to(w.querySelector('.work__media'), { yPercent: i % 2 ? -6 : 6, ease: 'none', scrollTrigger: { trigger: w, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
